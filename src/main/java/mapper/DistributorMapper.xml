@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.DistributorMapper">
+    <select id="getDistributorList" resultType="entity.Distributor">
+    select * from mdong4.Distributor
+  </select>
+<!--    get my information-->
+    <select id="getDistributor" resultType="entity.Distributor">
+        select * from mdong4.Distributor where distributorID=#{ID}
+    </select>
+<!--    get all publication-->
+    <select id="getPublicationList" resultType="integer">
+        select ID from mdong4.Publication
+    </select>
+<!--    place an order-->
+    <insert id="placeOrder">
+        insert into
+        OrderInfo(distributorID, publicationID, number_of_copies, delivery_date, order_date)
+        values (#{param1}, #{param2}, #{param3}, null, current_date)
+    </insert>
+<!--    get order belong to me-->
+    <select id="getOrderList" parameterType="int" resultType="entity.Order">
+        select * from mdong4.OrderInfo where distributorID=#{ID}
+    </select>
+<!--    pay an order-->
+    <update id="payOrder" parameterType="int">
+        update mdong4.OrderInfo set status =true where orderID=#{orderID}
+    </update>
+</mapper>
