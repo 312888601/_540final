@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="mdong4@classdb.csc.ncsu.edu">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.15">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.17">
     <root id="1">
       <ServerVersion>5.5.60</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -12,7 +12,6 @@
     </schema>
     <schema id="3" parent="1" name="mdong4">
       <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <collation id="4" parent="1" name="armscii8_bin">
@@ -933,7 +932,6 @@
     </key>
     <foreign-key id="236" parent="208" name="AuthorPay_ibfk_1">
       <ColNames>SSN</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1001,14 +999,12 @@
     </key>
     <foreign-key id="248" parent="209" name="BookInfo_ibfk_1">
       <ColNames>ID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="249" parent="209" name="BookInfo_ibfk_2">
       <ColNames>authorSSN</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1085,7 +1081,6 @@
     </key>
     <foreign-key id="262" parent="211" name="EditorInfo_StaffInfo_StaffID_fk">
       <ColNames>StaffID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>StaffInfo</RefTableName>
       <RefColNames>StaffID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1126,7 +1121,6 @@
     </key>
     <foreign-key id="269" parent="212" name="EditorPay_ibfk_1">
       <ColNames>StaffID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>EditorInfo</RefTableName>
       <RefColNames>StaffID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1194,13 +1188,11 @@
     </key>
     <foreign-key id="281" parent="213" name="OrderInfo_Distributor_distributorID_fk">
       <ColNames>distributorID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>Distributor</RefTableName>
       <RefColNames>distributorID</RefColNames>
     </foreign-key>
     <foreign-key id="282" parent="213" name="OrderInfo_Publication_ID_fk">
       <ColNames>publicationID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1235,14 +1227,12 @@
     </key>
     <foreign-key id="288" parent="214" name="PeriodPubInfo1_ibfk_1">
       <ColNames>ID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="289" parent="214" name="PeriodPubInfo1_ibfk_2">
       <ColNames>type</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>PeriodPubInfo2</RefTableName>
       <RefColNames>type</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1309,7 +1299,6 @@
     </key>
     <foreign-key id="301" parent="216" name="Publication_ibfk_1">
       <ColNames>staffID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>StaffInfo</RefTableName>
       <RefColNames>StaffID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1338,14 +1327,12 @@ title</ColNames>
     </key>
     <foreign-key id="306" parent="217" name="Publish_on_Publication_ID_fk">
       <ColNames>pubID</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="307" parent="217" name="Publish_on_ArticleInfo_title_fk">
       <ColNames>title</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>ArticleInfo</RefTableName>
       <RefColNames>title</RefColNames>
       <OnUpdate>cascade</OnUpdate>
@@ -1431,14 +1418,12 @@ title</ColNames>
     </key>
     <foreign-key id="322" parent="219" name="Written_by_ibfk_1">
       <ColNames>SSN</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="323" parent="219" name="Written_by_ibfk_2">
       <ColNames>title</ColNames>
-      <RefSchemaName>mdong4</RefSchemaName>
       <RefTableName>ArticleInfo</RefTableName>
       <RefColNames>title</RefColNames>
       <OnUpdate>cascade</OnUpdate>
