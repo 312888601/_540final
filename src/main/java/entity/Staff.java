@@ -1,5 +1,7 @@
 package entity;
 
+import java.sql.Date;
+
 public class Staff {
     private int StaffID;
     private String name;
@@ -10,12 +12,15 @@ public class Staff {
     private boolean isPublisher;
     private boolean isAdmin;
     private String address;
+    private int paycheck;
+    private java.sql.Date paycheckDate;
+    private String jobType;
 
     //constructors
     public Staff() {
     }
 
-    public Staff(int staffID, String name, int age, String gender, String phone, String emailAddress, boolean isPublisher, boolean isAdmin, String address) {
+    public Staff(int staffID, String name, int age, String gender, String phone, String emailAddress, boolean isPublisher, boolean isAdmin, String address, int paycheck, Date paycheckDate, String jobType) {
         StaffID = staffID;
         this.name = name;
         this.age = age;
@@ -25,6 +30,9 @@ public class Staff {
         this.isPublisher = isPublisher;
         this.isAdmin = isAdmin;
         this.address = address;
+        this.paycheck = paycheck;
+        this.paycheckDate = paycheckDate;
+        this.jobType = jobType;
     }
 
     public int getStaffID() {
@@ -97,5 +105,29 @@ public class Staff {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getPaycheck() {
+        return paycheck;
+    }
+
+    public void setPaycheck(int paycheck) {
+        this.paycheck = paycheck;
+    }
+
+    public Date getPaycheckDate() {
+        return paycheckDate;
+    }
+
+    public void setPaycheckDate(Date paycheckDate) {
+        this.paycheckDate = paycheckDate;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 }

@@ -22,12 +22,12 @@ public class Distributormenu {
         System.out.println("6. return");
 
         Scanner scanner= new Scanner(System.in);
-        String input=scanner.next();
+        String input=scanner.nextLine();
 
         switch (input){
             case "1":{
                 System.out.println("Please enter your ID:");
-                String ID=scanner.next();
+                String ID=scanner.nextLine();
 
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
@@ -55,11 +55,11 @@ public class Distributormenu {
             case "3":{
 
                 System.out.println("Please enter your distributorID:");
-                String distributorID=scanner.next();
+                String distributorID=scanner.nextLine();
                 System.out.println("Please enter the publication ID:");
-                String publicationID=scanner.next();
+                String publicationID=scanner.nextLine();
                 System.out.println("Please enter the # of copies:");
-                String numberOfCopies=scanner.next();
+                String numberOfCopies=scanner.nextLine();
 
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
@@ -69,7 +69,7 @@ public class Distributormenu {
             }
             case "4":{
                 System.out.println("Please enter your ID:");
-                String ID=scanner.next();
+                String ID=scanner.nextLine();
 
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
@@ -82,7 +82,7 @@ public class Distributormenu {
             }
             case "5":{
                 System.out.println("Please enter the order ID you want to pay:");
-                String orderID=scanner.next();
+                String orderID=scanner.nextLine();
 
                 SqlSession sqlSession=MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);

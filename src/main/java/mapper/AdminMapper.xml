@@ -7,4 +7,24 @@
     <select id="getStaffList" resultType="entity.Staff">
         select * from mdong4.StaffInfo
     </select>
+<!--Distributor CRUD-->
+    <select id="getDistributorList" resultType="entity.Distributor">
+        select * from mdong4.Distributor
+    </select>
+
+    <insert id="createNewDistributor">
+        insert into Distributor(distributorID, name, balance, city, streetAddress, type, contactPerson, phoneNumber)
+        values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8})
+    </insert>
+
+    <update id="updateDistributor">
+        update Distributor
+        set name=#{param2}, balance=#{param3}, city=#{param4}, streetAddress=#{param5}, type=#{param6}, contactPerson=#{param7}, phoneNumber=#{param8}
+        where distributorID=#{param1}
+    </update>
+    <delete id="deleteDistributor">
+        delete from Distributor
+        where distributorID=${distributorID}
+    </delete>
+
 </mapper>
