@@ -15,11 +15,16 @@ public class Adminmenu{
         System.out.println("1. Get all staff information");
         System.out.println("2. Get all editor information");
         System.out.println("3. Get all publisher information");
-
         System.out.println("4. delete an Editor account");
         System.out.println("5. Create a Publisher account");
         System.out.println("6. Update a Publisher account");
         System.out.println("7. delete an Publisher account");
+
+        System.out.println("3001. Create a distributor account");
+        System.out.println("3002. Update a distributor account");
+        System.out.println("3003. Check all distributor information");
+        System.out.println("3004. Delete a distributor account");
+
         System.out.println("8. return");
 
         Scanner scanner=new Scanner(System.in);
@@ -59,6 +64,11 @@ public class Adminmenu{
             case "6":
 
             case "7":
+
+            case "3001":
+            case "3002":
+            case "3003":
+            case "3004":
 
             case "8": Mainmenu.print();
 
