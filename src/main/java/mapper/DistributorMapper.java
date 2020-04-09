@@ -16,7 +16,7 @@ public interface DistributorMapper {
     List<Integer> getPublicationList();
 
     //place order
-    void placeOrder(int distributor_ID, int publication_ID, int number_of_copies);
+    void placeOrder(int distributorID, int publicationID, int numberOfCopies);
 
     //get all orders belongs to me
     List<Order> getOrderList(int ID);

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d630400-88b2-4f66-ae3d-2a3f26165fe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/_540final.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="9d630400-88b2-4f66-ae3d-2a3f26165fe5" name="Default Changelist" comment="change name">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/90eedd35-f3ca-4159-a1b1-ea90fc427972.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/90eedd35-f3ca-4159-a1b1-ea90fc427972.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/_540final.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/Adminmenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/Adminmenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/Distributormenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/Distributormenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Distributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Distributor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/DistributorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/DistributorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/DistributorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/DistributorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/mapper/DistributorMapper_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/mapper/DistributorMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Adminmenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Adminmenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Distributormenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Distributormenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Distributor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Distributor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Staff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/DistributorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/DistributorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/mapper/DistributorMapper_Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +65,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -71,7 +82,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1aB5QsbjkMoI2jZDFBrxOcdE2ni" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -161,18 +174,19 @@
       <workItem from="1586011950557" duration="16026000" />
       <workItem from="1586055526220" duration="8800000" />
       <workItem from="1586099374752" duration="7830000" />
-      <workItem from="1586196136153" duration="1587000" />
+      <workItem from="1586196136153" duration="6102000" />
+      <workItem from="1586384899664" duration="1507000" />
+      <workItem from="1586386731873" duration="4796000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1586197956304</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586197956304</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -182,41 +196,72 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <MESSAGE value="change name" />
+    <option name="LAST_COMMIT_MESSAGE" value="change name" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1586197929571">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1586391490151">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586197929571" />
+    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586391490151" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1586196950002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586196950002" />
-    <state width="813" height="215" key="GridCell.Tab.0.bottom" timestamp="1586196757003">
+    <state width="813" height="215" key="GridCell.Tab.0.bottom" timestamp="1586391522591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="813" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586196757003" />
-    <state width="813" height="215" key="GridCell.Tab.0.center" timestamp="1586196757003">
+    <state width="813" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586391522591" />
+    <state width="813" height="215" key="GridCell.Tab.0.center" timestamp="1586391522591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="813" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586196757003" />
-    <state width="813" height="215" key="GridCell.Tab.0.left" timestamp="1586196757003">
+    <state width="813" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586391522591" />
+    <state width="813" height="215" key="GridCell.Tab.0.left" timestamp="1586391522591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="813" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586196757003" />
-    <state width="813" height="215" key="GridCell.Tab.0.right" timestamp="1586196757003">
+    <state width="813" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586391522591" />
+    <state width="813" height="215" key="GridCell.Tab.0.right" timestamp="1586391522591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="813" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586196757003" />
+    <state width="813" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586391522591" />
     <state x="440" y="95" key="SettingsEditor" timestamp="1586197345990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586197345990" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1586391552322">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586391552322" />
+    <state x="832" y="422" width="326" height="230" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1586387260603">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="832" y="422" width="326" height="230" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586387260603" />
+    <state x="676" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586389097298">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="676" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586389097298" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1586386732715">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586386732715" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586386742311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586386742311" />
+    <state x="591" y="65" width="737" height="909" key="find.popup" timestamp="1586391310057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="591" y="65" width="737" height="909" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586391310057" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">

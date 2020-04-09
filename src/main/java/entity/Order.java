@@ -6,9 +6,9 @@ public class Order {
     private int orderID;
     private int distributorID;
     private int publicationID;
-    private int number_of_copies;
-    private java.sql.Date delivery_date;
-    private java.sql.Date order_date;
+    private int numberOfCopies;
+    private java.sql.Date deliveryDate;
+    private java.sql.Date orderDate;
     private double shippingCost;
     private boolean status;
 
@@ -36,28 +36,28 @@ public class Order {
         this.publicationID = publicationID;
     }
 
-    public int getNumber_of_copies() {
-        return number_of_copies;
+    public int getNumberOfCopies() {
+        return numberOfCopies;
     }
 
-    public void setNumber_of_copies(int number_of_copies) {
-        this.number_of_copies = number_of_copies;
+    public void setNumberOfCopies(int numberOfCopies) {
+        this.numberOfCopies = numberOfCopies;
     }
 
-    public Date getDelivery_date() {
-        return delivery_date;
+    public Date getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setDelivery_date(Date delivery_date) {
-        this.delivery_date = delivery_date;
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
-    public Date getOrder_date() {
-        return order_date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(Date order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public double getShippingCost() {
@@ -79,13 +79,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderID, int distributorID, int publicationID, int number_of_copies, java.sql.Date delivery_date, java.sql.Date order_date, double shippingCost, double price_per_copy, boolean status) {
+    public Order(int orderID, int distributorID, int publicationID, int numberOfCopies, java.sql.Date deliveryDate, java.sql.Date orderDate, double shippingCost, double pricePerCopy, boolean status) {
         this.orderID = orderID;
         this.distributorID = distributorID;
         this.publicationID = publicationID;
-        this.number_of_copies = number_of_copies;
-        this.delivery_date = delivery_date;
-        this.order_date = order_date;
+        this.numberOfCopies = numberOfCopies;
+        this.deliveryDate = deliveryDate;
+        this.orderDate = orderDate;
         this.shippingCost = shippingCost;
         this.status = status;
     }

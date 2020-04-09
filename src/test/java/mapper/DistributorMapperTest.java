@@ -6,7 +6,7 @@ import utils.MybatisUtils;
 
 import java.util.List;
 
-public class DistributorMapper_Test {
+public class DistributorMapperTest {
     public static void main(String[] args) {
         //get Sqlsession object
         SqlSession sqlSession= MybatisUtils.getSqlsession();

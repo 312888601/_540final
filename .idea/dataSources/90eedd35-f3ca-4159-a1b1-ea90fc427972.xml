@@ -830,599 +830,553 @@
     <table id="211" parent="3" name="EditorInfo"/>
     <table id="212" parent="3" name="EditorPay"/>
     <table id="213" parent="3" name="OrderInfo"/>
-    <table id="214" parent="3" name="PeriodPubInfo1"/>
-    <table id="215" parent="3" name="PeriodPubInfo2"/>
-    <table id="216" parent="3" name="Publication"/>
-    <table id="217" parent="3" name="Publish_on"/>
-    <table id="218" parent="3" name="StaffInfo"/>
-    <table id="219" parent="3" name="Written_by"/>
-    <column id="220" parent="206" name="title">
+    <table id="214" parent="3" name="PeriodPubInfo"/>
+    <table id="215" parent="3" name="Publication"/>
+    <table id="216" parent="3" name="Publish_on"/>
+    <table id="217" parent="3" name="StaffInfo"/>
+    <table id="218" parent="3" name="Written_by"/>
+    <column id="219" parent="206" name="title">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="221" parent="206" name="text">
+    <column id="220" parent="206" name="text">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="222" parent="206" name="topic">
+    <column id="221" parent="206" name="topic">
       <Position>3</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="223" parent="206" name="date">
+    <column id="222" parent="206" name="date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="224" parent="206" name="PRIMARY">
+    <key id="223" parent="206" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>title</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="225" parent="207" name="SSN">
+    <column id="224" parent="207" name="SSN">
       <Position>1</Position>
       <DataType>char(9)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="226" parent="207" name="name">
+    <column id="225" parent="207" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="227" parent="207" name="AutPeriod">
+    <column id="226" parent="207" name="AutPeriod">
       <Position>3</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="228" parent="207" name="type">
+    <column id="227" parent="207" name="type">
       <Position>4</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="229" parent="207" name="PRIMARY">
+    <key id="228" parent="207" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>SSN</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="230" parent="208" name="PaymentID">
+    <column id="229" parent="208" name="PaymentID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="208" name="date">
+    <column id="230" parent="208" name="date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="208" name="amount">
+    <column id="231" parent="208" name="amount">
       <Position>3</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="208" name="SSN">
+    <column id="232" parent="208" name="SSN">
       <Position>4</Position>
       <DataType>char(9)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="234" parent="208" name="SSN">
+    <index id="233" parent="208" name="SSN">
       <ColNames>SSN</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="235" parent="208" name="PRIMARY">
+    <key id="234" parent="208" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PaymentID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="236" parent="208" name="AuthorPay_ibfk_1">
+    <foreign-key id="235" parent="208" name="AuthorPay_ibfk_1">
       <ColNames>SSN</ColNames>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="237" parent="209" name="ID">
+    <column id="236" parent="209" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="209" name="text">
+    <column id="237" parent="209" name="ISBN">
       <Position>2</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="239" parent="209" name="ISBN">
-      <Position>3</Position>
       <DataType>char(13)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="209" name="edition">
-      <Position>4</Position>
+    <column id="238" parent="209" name="edition">
+      <Position>3</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="209" name="date">
-      <Position>5</Position>
+    <column id="239" parent="209" name="pubDate">
+      <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="209" name="authorSSN">
-      <Position>6</Position>
+    <column id="240" parent="209" name="authorSSN">
+      <Position>5</Position>
       <DataType>char(9)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="209" name="content">
-      <Position>7</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="244" parent="209" name="ISBN">
-      <ColNames>ISBN</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="245" parent="209" name="authorSSN">
+    <index id="241" parent="209" name="authorSSN">
       <ColNames>authorSSN</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="246" parent="209" name="PRIMARY">
+    <key id="242" parent="209" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="247" parent="209" name="ISBN">
-      <ColNames>ISBN</ColNames>
-      <UnderlyingIndexName>ISBN</UnderlyingIndexName>
-    </key>
-    <foreign-key id="248" parent="209" name="BookInfo_ibfk_1">
+    <foreign-key id="243" parent="209" name="BookInfo_ibfk_1">
       <ColNames>ID</ColNames>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="249" parent="209" name="BookInfo_ibfk_2">
+    <foreign-key id="244" parent="209" name="BookInfo_ibfk_2">
       <ColNames>authorSSN</ColNames>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="250" parent="210" name="distributorID">
+    <column id="245" parent="210" name="distributorID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="210" name="name">
+    <column id="246" parent="210" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="210" name="balance">
+    <column id="247" parent="210" name="balance">
       <Position>3</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="210" name="city">
+    <column id="248" parent="210" name="city">
       <Position>4</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="210" name="street address">
+    <column id="249" parent="210" name="streetAddress">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="210" name="type">
+    <column id="250" parent="210" name="type">
       <Position>6</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="210" name="contact person">
+    <column id="251" parent="210" name="contactPerson">
       <Position>7</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="210" name="phone_number">
+    <column id="252" parent="210" name="phoneNumber">
       <Position>8</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="258" parent="210" name="PRIMARY">
+    <key id="253" parent="210" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>distributorID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="259" parent="211" name="StaffID">
+    <column id="254" parent="211" name="StaffID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="211" name="type">
+    <column id="255" parent="211" name="type">
       <Position>2</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="261" parent="211" name="PRIMARY">
+    <key id="256" parent="211" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>StaffID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="262" parent="211" name="EditorInfo_StaffInfo_StaffID_fk">
+    <foreign-key id="257" parent="211" name="EditorInfo_StaffInfo_StaffID_fk">
       <ColNames>StaffID</ColNames>
       <RefTableName>StaffInfo</RefTableName>
       <RefColNames>StaffID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="263" parent="212" name="PaymentID">
+    <column id="258" parent="212" name="PaymentID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="212" name="date">
+    <column id="259" parent="212" name="date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="212" name="amount">
+    <column id="260" parent="212" name="amount">
       <Position>3</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="212" name="StaffID">
+    <column id="261" parent="212" name="StaffID">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="267" parent="212" name="StaffID">
+    <index id="262" parent="212" name="StaffID">
       <ColNames>StaffID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="268" parent="212" name="PRIMARY">
+    <key id="263" parent="212" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PaymentID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="269" parent="212" name="EditorPay_ibfk_1">
+    <foreign-key id="264" parent="212" name="EditorPay_ibfk_1">
       <ColNames>StaffID</ColNames>
       <RefTableName>EditorInfo</RefTableName>
       <RefColNames>StaffID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="270" parent="213" name="orderID">
+    <column id="265" parent="213" name="orderID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="213" name="distributorID">
+    <column id="266" parent="213" name="distributorID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="213" name="publicationID">
+    <column id="267" parent="213" name="publicationID">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="213" name="number_of_copies">
+    <column id="268" parent="213" name="numberOfCopies">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="213" name="delivery_date">
+    <column id="269" parent="213" name="deliveryDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="213" name="order_date">
+    <column id="270" parent="213" name="orderDate">
       <Position>6</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="213" name="shippingCost">
+    <column id="271" parent="213" name="shippingCost">
       <Position>7</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="213" name="status">
+    <column id="272" parent="213" name="status">
       <Position>8</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="278" parent="213" name="OrderInfo_Distributor_distributorID_fk">
+    <index id="273" parent="213" name="OrderInfo_Distributor_distributorID_fk">
       <ColNames>distributorID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="279" parent="213" name="OrderInfo_Publication_ID_fk">
+    <index id="274" parent="213" name="OrderInfo_Publication_ID_fk">
       <ColNames>publicationID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="280" parent="213" name="PRIMARY">
+    <key id="275" parent="213" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>orderID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="281" parent="213" name="OrderInfo_Distributor_distributorID_fk">
+    <foreign-key id="276" parent="213" name="OrderInfo_Distributor_distributorID_fk">
       <ColNames>distributorID</ColNames>
       <RefTableName>Distributor</RefTableName>
       <RefColNames>distributorID</RefColNames>
     </foreign-key>
-    <foreign-key id="282" parent="213" name="OrderInfo_Publication_ID_fk">
+    <foreign-key id="277" parent="213" name="OrderInfo_Publication_ID_fk">
       <ColNames>publicationID</ColNames>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="283" parent="214" name="ID">
+    <column id="278" parent="214" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="214" name="type">
+    <column id="279" parent="214" name="type">
       <Position>2</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="214" name="date">
+    <column id="280" parent="214" name="date">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="286" parent="214" name="type">
-      <ColNames>type</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="287" parent="214" name="PRIMARY">
+    <column id="281" parent="214" name="Periodicity">
+      <Position>4</Position>
+      <DataType>varchar(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="282" parent="214" name="textOfArticle">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="283" parent="214" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="214" name="PeriodPubInfo1_ibfk_1">
+    <foreign-key id="284" parent="214" name="PeriodPubInfo_ibfk_1">
       <ColNames>ID</ColNames>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="289" parent="214" name="PeriodPubInfo1_ibfk_2">
-      <ColNames>type</ColNames>
-      <RefTableName>PeriodPubInfo2</RefTableName>
-      <RefColNames>type</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
-    <column id="290" parent="215" name="type">
-      <Position>1</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="291" parent="215" name="PubPeriod">
-      <Position>2</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="292" parent="215" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>type</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="293" parent="216" name="ID">
+    <column id="285" parent="215" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="216" name="topic">
+    <column id="286" parent="215" name="type">
       <Position>2</Position>
-      <DataType>varchar(16)|0s</DataType>
+      <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="216" name="title">
+    <column id="287" parent="215" name="title">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="216" name="staffID">
+    <column id="288" parent="215" name="editor">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="216" name="price">
+    <column id="289" parent="215" name="topic">
       <Position>5</Position>
-      <DataType>double(10)|0s</DataType>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="298" parent="216" name="topicIndex">
-      <ColNames>topic</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="299" parent="216" name="staffID">
-      <ColNames>staffID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="300" parent="216" name="PRIMARY">
+    <key id="290" parent="215" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="301" parent="216" name="Publication_ibfk_1">
-      <ColNames>staffID</ColNames>
-      <RefTableName>StaffInfo</RefTableName>
-      <RefColNames>StaffID</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
-    <column id="302" parent="217" name="pubID">
+    <column id="291" parent="216" name="pubID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="217" name="title">
+    <column id="292" parent="216" name="title">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="304" parent="217" name="Publish_on_ArticleInfo_title_fk">
+    <index id="293" parent="216" name="Publish_on_ArticleInfo_title_fk">
       <ColNames>title</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="305" parent="217" name="PRIMARY">
+    <key id="294" parent="216" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>pubID
 title</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="306" parent="217" name="Publish_on_Publication_ID_fk">
+    <foreign-key id="295" parent="216" name="Publish_on_Publication_ID_fk">
       <ColNames>pubID</ColNames>
       <RefTableName>Publication</RefTableName>
       <RefColNames>ID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="307" parent="217" name="Publish_on_ArticleInfo_title_fk">
+    <foreign-key id="296" parent="216" name="Publish_on_ArticleInfo_title_fk">
       <ColNames>title</ColNames>
       <RefTableName>ArticleInfo</RefTableName>
       <RefColNames>title</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="308" parent="218" name="StaffID">
+    <column id="297" parent="217" name="StaffID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="218" name="name">
+    <column id="298" parent="217" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="310" parent="218" name="age">
+    <column id="299" parent="217" name="age">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="218" name="gender">
+    <column id="300" parent="217" name="jobType">
       <Position>4</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="218" name="phone">
+    <column id="301" parent="217" name="phone">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="218" name="email_address">
+    <column id="302" parent="217" name="emailAddress">
       <Position>6</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="218" name="isPublisher">
+    <column id="303" parent="217" name="isPublisher">
       <Position>7</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="218" name="isAdmin">
+    <column id="304" parent="217" name="isAdmin">
       <Position>8</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="218" name="address">
+    <column id="305" parent="217" name="address">
       <Position>9</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="317" parent="218" name="PRIMARY">
+    <column id="306" parent="217" name="gender">
+      <Position>10</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="307" parent="217" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>StaffID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="318" parent="219" name="SSN">
+    <column id="308" parent="218" name="SSN">
       <Position>1</Position>
       <DataType>char(9)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="219" name="title">
+    <column id="309" parent="218" name="title">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="320" parent="219" name="title">
+    <index id="310" parent="218" name="title">
       <ColNames>title</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="321" parent="219" name="PRIMARY">
+    <key id="311" parent="218" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>SSN
 title</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="322" parent="219" name="Written_by_ibfk_1">
+    <foreign-key id="312" parent="218" name="Written_by_ibfk_1">
       <ColNames>SSN</ColNames>
       <RefTableName>AuthorInfo</RefTableName>
       <RefColNames>SSN</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="323" parent="219" name="Written_by_ibfk_2">
+    <foreign-key id="313" parent="218" name="Written_by_ibfk_2">
       <ColNames>title</ColNames>
       <RefTableName>ArticleInfo</RefTableName>
       <RefColNames>title</RefColNames>

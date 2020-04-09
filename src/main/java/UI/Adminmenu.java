@@ -39,7 +39,7 @@ public class Adminmenu{
                     System.out.println("Gender: "+staff.getGender());
                     System.out.println("job type: ");
                     System.out.println("Phone: "+staff.getPhone());
-                    System.out.println("Email address: "+staff.getEmail_address());
+                    System.out.println("Email address: "+staff.getEmailAddress());
                     System.out.println("paycheck: ");
                     System.out.println("paycheck date: ");
                 }

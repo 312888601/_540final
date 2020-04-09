@@ -36,18 +36,18 @@ public class Distributormenu {
                 System.out.println("distributorID:"+distributor.getDistributorID());
                 System.out.println("name:"+distributor.getName());
                 System.out.println("type:"+distributor.getType());
-                System.out.println("street address:"+distributor.getStreet_address());
+                System.out.println("street address:"+distributor.getStreetAddress());
                 System.out.println("city:"+distributor.getCity());
-                System.out.println("phone number:"+distributor.getPhone_number());
-                System.out.println("contact person:"+distributor.getContact_person());
+                System.out.println("phone number:"+distributor.getPhoneNumber());
+                System.out.println("contact person:"+distributor.getContactPerson());
                 System.out.println("balance:"+distributor.getBalance());
                 Distributormenu.print();
             }
             case "2":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
-                List<Integer> ID_List=distributorMapper.getPublicationList();
-                for (Integer integer : ID_List) {
+                List<Integer> IDList=distributorMapper.getPublicationList();
+                for (Integer integer : IDList) {
                     System.out.println("ID: "+integer.toString());
                 }
                 Distributormenu.print();
@@ -55,15 +55,15 @@ public class Distributormenu {
             case "3":{
 
                 System.out.println("Please enter your distributorID:");
-                String distributor_ID=scanner.next();
+                String distributorID=scanner.next();
                 System.out.println("Please enter the publication ID:");
-                String publication_ID=scanner.next();
+                String publicationID=scanner.next();
                 System.out.println("Please enter the # of copies:");
-                String number_of_copies=scanner.next();
+                String numberOfCopies=scanner.next();
 
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
-                distributorMapper.placeOrder(Integer.parseInt(distributor_ID),Integer.parseInt(publication_ID), Integer.parseInt(number_of_copies));
+                distributorMapper.placeOrder(Integer.parseInt(distributorID),Integer.parseInt(publicationID), Integer.parseInt(numberOfCopies));
                 sqlSession.commit();
                 Distributormenu.print();
             }
