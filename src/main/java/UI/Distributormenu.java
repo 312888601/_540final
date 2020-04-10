@@ -76,7 +76,7 @@ public class Distributormenu {
                 List<Order> orderList=distributorMapper.getOrderList(Integer.parseInt(ID));
 
                 for (Order order : orderList) {
-                    System.out.println("OrderID: "+order.getOrderID()+"\t"+"status: "+order.isStatus());
+                    System.out.println("OrderID: "+order.getOrderID());
                 }
                 Distributormenu.print();
             }

@@ -27,4 +27,58 @@
         where distributorID=${distributorID}
     </delete>
 
+    <!--    place an order-->
+    <insert id="placeOrder">
+        insert into
+        OrderInfo(distributorID, publicationID, numberOfCopies, deliveryDate, orderDate, shippingCost, pricePerCopy)
+        values (#{param1}, #{param2}, #{param3}, null, #{param4}, 0, 0)
+    </insert>
+    <!--    check order information-->
+    <select id="checkOrder" resultType="entity.Order">
+        select * from OrderInfo where orderID=#{param1}
+    </select>
+    <!--    delete an order-->
+    <delete id="deleteOrder">
+        delete from OrderInfo
+        where orderID=#{param1}
+    </delete>
+    <!--    update an order-->
+    <update id="updateOrder">
+        update OrderInfo
+        set distributorID=#{param2},publicationID=#{param3},numberOfCopies=#{param4},deliveryDate=#{param5},shippingCost=#{param6},pricePerCopy=#{param7}
+        where orderID=#{param1}
+    </update>
+    <!--    calculate balance 1. find the unpaid order-->
+    <select id="findUnpaidOrder" resultType="entity.Order">
+        select * from OrderInfo where distributorID=#{param1} and not exists (select orderID from Payment where Payment.orderID=OrderInfo.orderID)
+    </select>
+    <!--    calculate balance 2.update-->
+    <update id="updateBalance">
+        update Distributor
+        set balance=#{param2}
+        where distributorID=#{param1}
+    </update>
+    <!--    get order belong to certain distributor-->
+    <select id="getOrderList" parameterType="int" resultType="entity.Order">
+        select * from mdong4.OrderInfo where distributorID=#{ID}
+    </select>
+    <!--    pay an order-->
+    <update id="payOrder" parameterType="int">
+        insert into Payment(orderID, totalPayment)
+        values (#{param1},#{param2})
+    </update>
+    <!--    delete payment-->
+    <delete id="deletePayment">
+        delete from Payment
+        where orderID=#{param1}
+    </delete>
+    <!--    check one payment-->
+    <select id="checkPayment" resultType="entity.Payment">
+        select * from Payment where orderID=#{param1}
+    </select>
+    <!--    check all payment-->
+    <select id="checkAllPayment" resultType="entity.Payment">
+        select * from Payment
+    </select>
+
 </mapper>

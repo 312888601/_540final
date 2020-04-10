@@ -1,9 +1,6 @@
 package UI;
 
-import entity.Book;
-import entity.Distributor;
-import entity.Staff;
-import entity.Publication;
+import entity.*;
 
 import mapper.AdminMapper;
 import mapper.DistributorMapper;
@@ -42,6 +39,18 @@ public class Adminmenu{
         System.out.println("4007. Update a PeriodPublication");
         System.out.println("4008. Find publication by topic");
         System.out.println("4009. Find book by date");
+
+        System.out.println("5001. Place an order");
+        System.out.println("5002. Update an order");
+        System.out.println("5003. Check order information");
+        System.out.println("5004. Delete an order");
+        System.out.println("5005. Bill an order");
+        System.out.println("5006. Pay an order");
+        System.out.println("5007. Check all payment");
+        System.out.println("5008. Check the order payment information");
+        System.out.println("5009. Delete a payment");
+        System.out.println("5010. Calculate the balance");
+
 
 
         System.out.println("8. return");
@@ -391,6 +400,214 @@ public class Adminmenu{
                     System.out.println("Edition: "+book.getEdition());
                     System.out.println("Pubdate: "+book.getPubDate());
                 }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+
+            //create order
+            case "5001":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                System.out.println("Please enter  distributor ID:");
+                String distributorID=scanner.nextLine();
+                System.out.println("Please enter publication ID:");
+                String publicationID=scanner.nextLine();
+                System.out.println("Please enter number of copies:");
+                String numberOfCopies=scanner.nextLine();
+                System.out.println("Please enter current date(YYYY-MM-DD):");
+                String orderDate=scanner.nextLine();
+                adminMapper.placeOrder(Integer.parseInt(distributorID),Integer.parseInt(publicationID),Integer.parseInt(numberOfCopies),Date.valueOf(orderDate));
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //update order
+            case "5002":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                System.out.println("Please enter  distributor ID:");
+                String distributorID=scanner.nextLine();
+                System.out.println("Please enter publication ID:");
+                String publicationID=scanner.nextLine();
+                System.out.println("Please enter number of copies:");
+                String numberOfCopies=scanner.nextLine();
+                System.out.println("Please enter deliveryDate(YYYY-MM-DD):");
+                String deliveryDate=scanner.nextLine();
+                System.out.println("Please enter shippingCost");
+                String shippingCost=scanner.nextLine();
+                System.out.println("Please enter pricePerCopy:");
+                String pricePerCopy=scanner.nextLine();
+                try{
+                    adminMapper.updateOrder(Integer.parseInt(orderID),Integer.parseInt(distributorID),Integer.parseInt(publicationID),Integer.parseInt(numberOfCopies), Date.valueOf(deliveryDate), Integer.parseInt(shippingCost), Integer.parseInt(pricePerCopy));
+                    List<Order> unpaidOrder=adminMapper.findUnpaidOrder(Integer.parseInt(distributorID));
+                    int balance=0;
+                    for (Order order:unpaidOrder) {
+                        int order_value=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                        balance+=order_value;
+                    }
+                    adminMapper.updateBalance(Integer.parseInt(distributorID), balance);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //check order information
+            case "5003": {
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                Order order=adminMapper.checkOrder(Integer.parseInt(orderID));
+                System.out.println("orderID:"+order.getOrderID());
+                System.out.println("distributorID:"+order.getDistributorID());
+                System.out.println("publicationID:"+order.getPublicationID());
+                System.out.println("numberOfCopies:"+order.getNumberOfCopies());
+                System.out.println("deliveryDate:"+order.getDeliveryDate());
+                System.out.println("orderDate:"+order.getOrderDate());
+                System.out.println("shippingCost:"+ order.getShippingCost());
+                System.out.println("price per copy:"+ order.getPricePerCopy());
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //delete order
+            case "5004": {
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                try{
+                    Order targetorder=adminMapper.checkOrder(Integer.parseInt(orderID));
+                    int distributorID=targetorder.getDistributorID();
+                    adminMapper.deleteOrder(Integer.parseInt(orderID));
+                    List<Order> unpaidOrder=adminMapper.findUnpaidOrder(distributorID);
+                    int balance=0;
+                    for (Order order:unpaidOrder) {
+                        int order_value=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                        balance+=order_value;
+                    }
+                    adminMapper.updateBalance(distributorID, balance);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //bill order
+            case "5005": {
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                Order order=adminMapper.checkOrder(Integer.parseInt(orderID));
+                int bill=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                System.out.println("Order Bill:"+ bill);
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //pay order
+            case "5006": {
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                System.out.println("Please enter payment:");
+                String totalPayment=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                try{
+                    adminMapper.payOrder(Integer.parseInt(orderID), Integer.parseInt(totalPayment));
+                    Order targetorder=adminMapper.checkOrder(Integer.parseInt(orderID));
+                    int distributorID=targetorder.getDistributorID();
+                    List<Order> unpaidOrder=adminMapper.findUnpaidOrder(distributorID);
+                    int balance=0;
+                    for (Order order:unpaidOrder) {
+                        int order_value=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                        balance+=order_value;
+                    }
+                    adminMapper.updateBalance(distributorID, balance);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //check all payment
+            case "5007" :{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                List<Payment> paymentList=adminMapper.checkAllPayment();
+
+                for (Payment payment:paymentList) {
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+payment.getOrderID());
+                    System.out.println("Total Payment: "+payment.getTotalPayment());
+                }
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //check one payment information
+            case "5008" :{
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                Payment payment=adminMapper.checkPayment(Integer.parseInt(orderID));
+                System.out.println("-----------------------");
+                System.out.println("ID: "+payment.getOrderID());
+                System.out.println("Total Payment: "+payment.getTotalPayment());
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //delete payment
+            case "5009":{
+                System.out.println("Please enter orderID:");
+                String orderID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                try{
+                    Order targetorder=adminMapper.checkOrder(Integer.parseInt(orderID));
+                    adminMapper.deletePayment(Integer.parseInt(orderID));
+                    int distributorID=targetorder.getDistributorID();
+                    List<Order> unpaidOrder=adminMapper.findUnpaidOrder(distributorID);
+                    int balance=0;
+                    for (Order order:unpaidOrder) {
+                        int order_value=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                        balance+=order_value;
+                    }
+                    adminMapper.updateBalance(distributorID, balance);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+            //calculate balence
+            case "5010":{
+                System.out.println("Please enter distributorID:");
+                String distributorID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                List<Order> unpaidOrder=adminMapper.findUnpaidOrder(Integer.parseInt(distributorID));
+                int balance=0;
+                for (Order order:unpaidOrder) {
+                    int order_value=order.getPricePerCopy()*order.getNumberOfCopies()+order.getShippingCost();
+                    balance+=order_value;
+                }
+                adminMapper.updateBalance(Integer.parseInt(distributorID), balance);
+                sqlSession.commit();
                 sqlSession.close();
                 Adminmenu.print();
             }

@@ -9,8 +9,8 @@ public class Order {
     private int numberOfCopies;
     private java.sql.Date deliveryDate;
     private java.sql.Date orderDate;
-    private double shippingCost;
-    private boolean status;
+    private int shippingCost;
+    private int pricePerCopy;
 
     public int getOrderID() {
         return orderID;
@@ -60,26 +60,22 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public double getShippingCost() {
+    public int getShippingCost() {
         return shippingCost;
     }
 
-    public void setShippingCost(double shippingCost) {
+    public void setShippingCost(int shippingCost) {
         this.shippingCost = shippingCost;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
+    public int getPricePerCopy() {return pricePerCopy; }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+    public void setPricePerCopy(int pricePerCopy) {this.pricePerCopy = pricePerCopy; }
 
     public Order() {
     }
 
-    public Order(int orderID, int distributorID, int publicationID, int numberOfCopies, java.sql.Date deliveryDate, java.sql.Date orderDate, double shippingCost, double pricePerCopy, boolean status) {
+    public Order(int orderID, int distributorID, int publicationID, int numberOfCopies, java.sql.Date deliveryDate, java.sql.Date orderDate, int shippingCost, int pricePerCopy) {
         this.orderID = orderID;
         this.distributorID = distributorID;
         this.publicationID = publicationID;
@@ -87,6 +83,6 @@ public class Order {
         this.deliveryDate = deliveryDate;
         this.orderDate = orderDate;
         this.shippingCost = shippingCost;
-        this.status = status;
+        this.pricePerCopy = pricePerCopy;
     }
 }
