@@ -36,8 +36,10 @@ public class Mainmenu{
 
             case "4": Distributormenu.print();
 
-            case "5":
+            case "5": Reportmenu.print();
+            case "6": {
                 break;
+            }
         }
 
     }
