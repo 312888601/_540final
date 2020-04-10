@@ -28,6 +28,7 @@ public class Adminmenu{
         System.out.println("1002. Update a staff account");
         System.out.println("1003. Create a staff account");
         System.out.println("1004. Delete a staff account");
+        System.out.println("1005. Check total payments by work type:");
 
         System.out.println("3001. Check all distributor information");
         System.out.println("3002. Update a distributor account");
@@ -206,6 +207,15 @@ public class Adminmenu{
                 sqlSession.close();
                 Adminmenu.print();
 
+            }
+
+            case "1005":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                System.out.println("Please enter work type :");
+                String jobType = scanner.nextLine();
+                int totalPayments=adminMapper.getTotalBywork(jobType);
+                System.out.println("The total payment for job type "+jobType+" is : "+ totalPayments);
             }
 
 

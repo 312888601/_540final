@@ -25,11 +25,10 @@
         where StaffID=${StaffID}
     </delete>
 
-    <!--<select id="calPayByWork">-->
-        <!--select SUM(paycheck),paycheckDate from StaffInfo-->
-        <!--where jobType LIKE "%${jobType}"-->
-        <!--GROUP BY paycheckDate-->
-    <!--</select>-->
+    <select id="getTotalBywork" resultType="integer">
+        select SUM(paycheck) from StaffInfo
+        where jobType LIKE "%${jobType}"
+    </select>
 <!--Distributor CRUD-->
     <select id="getDistributorList" resultType="entity.Distributor">
         select * from mdong4.Distributor

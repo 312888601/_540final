@@ -17,8 +17,8 @@ public interface AdminMapper {
     void updateStaff(int StaffID, String name, int age, String gender, String phone, String emailAddress, boolean isPublisher, boolean isAdmin, String address, int paycheck, Date paycheckDate, String jobType);
     //delete a staff account
     void deleteStaff(int StaffID);
-//    //calculate total payments according to worktype
-//    void calPayByWork(String jobType);
+    //calculate total payments according to worktype
+    Integer getTotalBywork(String jobType);
 //    //calculate total payments according to month
 
     //check all distributor information
