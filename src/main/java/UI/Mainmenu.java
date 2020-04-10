@@ -20,7 +20,8 @@ public class Mainmenu{
         System.out.println("2. Publisher");
         System.out.println("3. Editor");
         System.out.println("4. Distributor");
-        System.out.println("5. Exit");
+        System.out.println("5. Report");
+        System.out.println("6. Exit");
 
         Scanner scanner=new Scanner(System.in);
         String a=scanner.nextLine();
@@ -36,9 +37,10 @@ public class Mainmenu{
 
             case "4": Distributormenu.print();
 
-            case "5":
-                System.exit(0);
+            case "5": Reportmenu.print();
+            case "6": {
                 break;
+            }
         }
 
     }
