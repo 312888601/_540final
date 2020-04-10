@@ -19,5 +19,6 @@
         <mapper resource="mapper/AdminMapper.xml"/>
         <mapper resource="mapper/EditorMapper.xml"/>
         <mapper resource="mapper/PublisherMapper.xml"/>
+        <mapper resource="mapper/ReportMapper.xml"/>
     </mappers>
 </configuration>

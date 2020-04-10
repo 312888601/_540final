@@ -39,6 +39,7 @@ public class Mainmenu{
 
             case "5": Reportmenu.print();
             case "6": {
+                System.exit(0);
                 break;
             }
         }
