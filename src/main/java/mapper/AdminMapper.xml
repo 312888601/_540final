@@ -17,12 +17,19 @@
     <update id="updateStaff">
         update StaffInfo
         set name=#{param2}, age=#{param3}, gender=#{param4}, phone=#{param5}, emailAddress=#{param6}, isPublisher=#{param7}, isAdmin=#{param8}, address=#{param9}, paycheck=#{param10}, paycheckDate=#{param11}, jobType=#{param12}
+        where StaffID=#{param1}
     </update>
 
     <delete id="deleteStaff">
         delete from StaffInfo
         where StaffID=${StaffID}
     </delete>
+
+    <!--<select id="calPayByWork">-->
+        <!--select SUM(paycheck),paycheckDate from StaffInfo-->
+        <!--where jobType LIKE "%${jobType}"-->
+        <!--GROUP BY paycheckDate-->
+    <!--</select>-->
 <!--Distributor CRUD-->
     <select id="getDistributorList" resultType="entity.Distributor">
         select * from mdong4.Distributor

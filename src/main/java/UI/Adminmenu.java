@@ -118,6 +118,7 @@ public class Adminmenu{
                     System.out.println("paycheckDate: "+staff.getPaycheckDate());
                     System.out.println("jobType: "+staff.getJobType());
                 }
+                sqlSession.close();
                 Adminmenu.print();
 
             }
@@ -154,6 +155,7 @@ public class Adminmenu{
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
                 adminMapper.updateStaff(Integer.parseInt(StaffID), name, Integer.parseInt(age), gender, phone, emailAddress, Boolean.parseBoolean(isPublisher), Boolean.parseBoolean(isAdmin), address,Integer.parseInt(paycheck), paycheckDate, jobType);
                 sqlSession.commit();
+                sqlSession.close();
                 Adminmenu.print();
 
             }
@@ -190,6 +192,7 @@ public class Adminmenu{
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
                 adminMapper.createNewStaff(Integer.parseInt(StaffID), name, Integer.parseInt(age), gender, phone, emailAddress, Boolean.parseBoolean(isPublisher), Boolean.parseBoolean(isAdmin), address,Integer.parseInt(paycheck), paycheckDate, jobType);
                 sqlSession.commit();
+                sqlSession.close();
                 Adminmenu.print();
 
             }
@@ -200,9 +203,11 @@ public class Adminmenu{
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
                 adminMapper.deleteStaff(Integer.parseInt(StaffID));
                 sqlSession.commit();
+                sqlSession.close();
                 Adminmenu.print();
 
             }
+
 
             case "3001": {
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
