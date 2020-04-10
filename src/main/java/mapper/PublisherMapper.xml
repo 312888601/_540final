@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.PublisherMapper">
+    <select id="getPubList" resultType="entity.Publication">
+        select * from Publication
+    </select>
+   <!-- Book CRUD -->
+    <insert id="createBook">
+        insert into Publication(ID,topic,title,editor,type)
+         values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5});
+
+        insert into BookInfo(ID,ISBN, edition, pubDate)
+         values (#{param1},#{param6}, #{param7}, #{param8});
+    </insert>
+
+    <delete id="deleteBook">
+        delete from BookInfo
+        where ID=${ID};
+
+        delete from Publication
+        where ID=${ID};
+
+    </delete>
+
+    <!-- PeriodPublication CRUD -->
+
+
+</mapper>

@@ -2,11 +2,16 @@ package UI;
 
 import entity.Distributor;
 import entity.Staff;
+import entity.Publication;
+
 import mapper.AdminMapper;
 import mapper.DistributorMapper;
+import mapper.PublisherMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import utils.MybatisUtils;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +30,11 @@ public class Adminmenu{
         System.out.println("3002. Update a distributor account");
         System.out.println("3003. Create a distributor account");
         System.out.println("3004. Delete a distributor account");
+
+
+        System.out.println("4001. Get all Publication information");
+        System.out.println("4002. Create new book");
+        System.out.println("4003. Delete book");
 
         System.out.println("8. return");
 
@@ -135,14 +145,69 @@ public class Adminmenu{
                 sqlSession.commit();
                 Adminmenu.print();
             }
-            case "3004":
+            case "3004": {
                 System.out.println("Please enter the distrbutor ID you want to delete:");
                 String distributorID = scanner.nextLine();
-                SqlSession sqlSession= MybatisUtils.getSqlsession();
-                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                SqlSession sqlSession = MybatisUtils.getSqlsession();
+                AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
                 adminMapper.deleteDistributor(Integer.parseInt(distributorID));
                 sqlSession.commit();
                 Adminmenu.print();
+
+            }
+
+            case "4001":{
+
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                List<Publication> pubList=publisherMapper.getPubList();
+
+                for (Publication pub:pubList) {
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+pub.getID());
+                    System.out.println("Title: "+pub.getTitle());
+                    System.out.println("Topic: "+pub.getTopic());
+                    System.out.println("Editor: "+pub.getEditor());
+                    System.out.println("Type: "+pub.getType());
+                }
+                Adminmenu.print();
+            }
+
+            case "4002":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                System.out.println("Please enter  ID:");
+                String ID=scanner.nextLine();
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                System.out.println("Please enter topic:");
+                String topic=scanner.nextLine();
+                System.out.println("Please enter editor:");
+                String editor=scanner.nextLine();
+                System.out.println("Please enter type:");
+                String type=scanner.nextLine();
+                System.out.println("Please enter ISBN:");
+                String ISBN=scanner.nextLine();
+                System.out.println("Please enter edtion:");
+                String edition=scanner.nextLine();
+                System.out.println("Please enter date(YYYY-MM-DD):");
+                String date=scanner.nextLine();
+                publisherMapper.createBook(Integer.parseInt(ID),topic,title,editor,type,Integer.parseInt(ISBN),edition, Date.valueOf(date));
+                sqlSession.commit();
+
+                Adminmenu.print();
+            }
+
+            case "4003": {
+                SqlSession sqlSession = MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper = sqlSession.getMapper(PublisherMapper.class);
+                System.out.println("Please enter  ID:");
+                String ID = scanner.nextLine();
+                publisherMapper.deleteBook(Integer.parseInt(ID));
+                sqlSession.commit();
+                Adminmenu.print();
+            }
+
             case "8": Mainmenu.print();
 
         }
