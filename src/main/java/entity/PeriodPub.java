@@ -7,10 +7,10 @@ public class PeriodPub {
     private String Periodicity;
     private String textOfArticle;
 
-    public PeriodPub(int ID, Date date, String periodicity, String textOfArticle) {
+    public PeriodPub(int ID, Date date, String Periodicity, String textOfArticle) {
         this.ID = ID;
         this.date = date;
-        this.Periodicity = periodicity;
+        this.Periodicity = Periodicity;
         this.textOfArticle = textOfArticle;
     }
 

@@ -37,6 +37,7 @@ public class Mainmenu{
             case "4": Distributormenu.print();
 
             case "5":
+                System.exit(0);
                 break;
         }
 
