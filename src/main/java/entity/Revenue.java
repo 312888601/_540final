@@ -5,6 +5,7 @@ public class Revenue {
     private int distributorID;
     private int totalPayment;
     private String city;
+    private String streetAddress;
 
     public int getOrderID() {
         return orderID;
@@ -28,6 +29,14 @@ public class Revenue {
 
     public void setTotalPayment(int totalPayment) {
         this.totalPayment = totalPayment;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public String getCity() {

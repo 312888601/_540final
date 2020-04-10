@@ -1,5 +1,7 @@
 package mapper;
 import entity.Revenue;
+import entity.Staff;
+
 import java.util.List;
 
 public interface ReportMapper {
@@ -14,4 +16,8 @@ public interface ReportMapper {
     List<Revenue> getRevenuePerDistributor();
     //get revenue per city
     List<Revenue> getRevenuePerCity();
+    //get revenue per location
+    List<Revenue> getRevenuePerLocation();
+    //get total payment per job type
+    List<Staff> getTotalPaymentPerJobType();
 }

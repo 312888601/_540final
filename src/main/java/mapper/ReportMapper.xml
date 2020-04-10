@@ -28,6 +28,15 @@
 
     <select id="getRevenuePerCity" resultType="entity.Revenue">
         SELECT Payment.orderID, totalPayment, distributorID, city FROM Payment JOIN (SELECT orderID, OrderInfo.distributorID, city FROM OrderInfo
-    JOIN Distributor ON OrderInfo.distributorID=Distributor.distributorID) AS city ON Payment.orderID=city.orderID
+        JOIN Distributor ON OrderInfo.distributorID=Distributor.distributorID) AS city ON Payment.orderID=city.orderID
+    </select>
+
+    <select id="getRevenuePerLocation" resultType="entity.Revenue">
+        SELECT Payment.orderID, totalPayment, distributorID, streetAddress FROM Payment JOIN (SELECT orderID, OrderInfo.distributorID, streetAddress FROM OrderInfo
+        JOIN Distributor ON OrderInfo.distributorID=Distributor.distributorID) AS location ON Payment.orderID=location.orderID
+    </select>
+
+    <select id="getTotalPaymentPerJobType" resultType="entity.Staff">
+        SELECT jobType, sum(paycheck) AS paycheck from StaffInfo GROUP BY jobType
     </select>
 </mapper>

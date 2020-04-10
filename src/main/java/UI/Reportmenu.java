@@ -1,5 +1,6 @@
 package UI;
 
+import entity.Staff;
 import mapper.ReportMapper;
 import org.apache.ibatis.session.SqlSession;
 import utils.MybatisUtils;
@@ -17,6 +18,8 @@ public class Reportmenu {
         System.out.println("4. Get total revenue per city");
         System.out.println("5. Get total revenue per distributor");
         System.out.println("6. Get total revenue per location");
+        System.out.println("7. Get total payment per job type");
+        System.out.println("8. ");
 
         Scanner scanner=new Scanner(System.in);
         String input = scanner.nextLine();
@@ -72,7 +75,29 @@ public class Reportmenu {
 
                 Reportmenu.print();
             }
-            case "6":{}
+            case "6":{
+                SqlSession sqlSession=MybatisUtils.getSqlsession();
+                ReportMapper reportMapper=sqlSession.getMapper(ReportMapper.class);
+                List<Revenue>revenueList=reportMapper.getRevenuePerLocation();
+
+                for (Revenue revenue : revenueList) {
+                    System.out.println("Loacation: "+revenue.getStreetAddress()+"\t"+"Revenue: "+revenue.getTotalPayment());
+                }
+
+                Reportmenu.print();
+            }
+
+            case "7":{
+                SqlSession sqlSession=MybatisUtils.getSqlsession();
+                ReportMapper reportMapper=sqlSession.getMapper(ReportMapper.class);
+
+                List<Staff> staffList=reportMapper.getTotalPaymentPerJobType();
+                for (Staff staff : staffList) {
+                    System.out.println("job type: "+staff.getJobType()+"\t"+"Total payment: "+staff.getPaycheck());
+                }
+
+                Reportmenu.print();
+            }
 
 
     }
