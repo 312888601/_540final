@@ -24,6 +24,11 @@ public class Adminmenu{
         System.out.println("6. Update a Publisher account");
         System.out.println("7. delete an Publisher account");
 
+        System.out.println("1001. Check all staff information");
+        System.out.println("1002. Update a staff account");
+        System.out.println("1003. Create a staff account");
+        System.out.println("1004. Delete a staff account");
+
         System.out.println("3001. Check all distributor information");
         System.out.println("3002. Update a distributor account");
         System.out.println("3003. Create a distributor account");
@@ -92,6 +97,117 @@ public class Adminmenu{
             case "6":
 
             case "7":
+
+            case "1001":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                List<Staff> staffList=adminMapper.getStaffList();
+
+                for (Staff staff : staffList) {
+                    System.out.println("-----------------------");
+                    System.out.println("staffID: "+ staff.getStaffID());
+                    System.out.println("name: "+staff.getName());
+                    System.out.println("age: "+staff.getAge());
+                    System.out.println("gender: "+staff.getGender());
+                    System.out.println("phone: "+staff.getPhone());
+                    System.out.println("email address: "+staff.getEmailAddress());
+                    System.out.println("is Publisher: "+staff.isPublisher());
+                    System.out.println("is Admin: "+staff.isAdmin());
+                    System.out.println("address: "+staff.getAddress());
+                    System.out.println("paycheck: "+staff.getPaycheck());
+                    System.out.println("paycheckDate: "+staff.getPaycheckDate());
+                    System.out.println("jobType: "+staff.getJobType());
+                }
+                sqlSession.close();
+                Adminmenu.print();
+
+            }
+            case "1002":{
+                //get user inputs
+                System.out.println("Please enter the staff ID you want to update:");
+                String StaffID=scanner.nextLine();
+                System.out.println("Please enter new name:");
+                String name=scanner.nextLine();
+                System.out.println("Please enter new age:");
+                String age=scanner.nextLine();
+                System.out.println("Please enter new gender:");
+                String gender=scanner.nextLine();
+                System.out.println("Please enter new phone:");
+                String phone=scanner.nextLine();
+                System.out.println("Please enter new email Address:");
+                String emailAddress=scanner.nextLine();
+                System.out.println("Please confirm whether it is Publisher(use 1 or 0):");
+                String isPublisher =scanner.nextLine();
+                System.out.println("Please confirm whether it is Admin(use 1 or 0):");
+                String isAdmin =scanner.nextLine();
+                System.out.println("Please enter new address:");
+                String address=scanner.nextLine();
+                System.out.println("Please enter new paycheck:");
+                String paycheck=scanner.nextLine();
+                System.out.println("Please enter new paycheckDate:");
+                String paycheckDate1=scanner.nextLine();
+                System.out.println("Please enter new job type:");
+                String jobType=scanner.nextLine();
+
+                Date paycheckDate=java.sql.Date.valueOf(paycheckDate1);
+
+                SqlSession sqlSession=MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                adminMapper.updateStaff(Integer.parseInt(StaffID), name, Integer.parseInt(age), gender, phone, emailAddress, Boolean.parseBoolean(isPublisher), Boolean.parseBoolean(isAdmin), address,Integer.parseInt(paycheck), paycheckDate, jobType);
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+
+            }
+            case "1003":{
+                //get user inputs
+                System.out.println("Please enter staff ID:");
+                String StaffID=scanner.nextLine();
+                System.out.println("Please enter name:");
+                String name=scanner.nextLine();
+                System.out.println("Please enter age:");
+                String age=scanner.nextLine();
+                System.out.println("Please enter gender:");
+                String gender=scanner.nextLine();
+                System.out.println("Please enter phone:");
+                String phone=scanner.nextLine();
+                System.out.println("Please enter email Address:");
+                String emailAddress=scanner.nextLine();
+                System.out.println("Please confirm whether it is Publisher(use 1 or 0):");
+                String isPublisher =scanner.nextLine();
+                System.out.println("Please confirm whether it is Admin(use 1 or 0):");
+                String isAdmin =scanner.nextLine();
+                System.out.println("Please enter address:");
+                String address=scanner.nextLine();
+                System.out.println("Please enter paycheck:");
+                String paycheck=scanner.nextLine();
+                System.out.println("Please enter paycheckDate:");
+                String paycheckDate1=scanner.nextLine();
+                System.out.println("Please enter new job type:");
+                String jobType=scanner.nextLine();
+
+                Date paycheckDate=java.sql.Date.valueOf(paycheckDate1);
+
+                SqlSession sqlSession=MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                adminMapper.createNewStaff(Integer.parseInt(StaffID), name, Integer.parseInt(age), gender, phone, emailAddress, Boolean.parseBoolean(isPublisher), Boolean.parseBoolean(isAdmin), address,Integer.parseInt(paycheck), paycheckDate, jobType);
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+
+            }
+            case "1004":{
+                System.out.println("Please enter the Staff ID you want to delete:");
+                String StaffID = scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                adminMapper.deleteStaff(Integer.parseInt(StaffID));
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+
+            }
+
 
             case "3001": {
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
