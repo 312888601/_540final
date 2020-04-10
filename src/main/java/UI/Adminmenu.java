@@ -463,9 +463,11 @@ public class Adminmenu{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
                 Order order=adminMapper.checkOrder(Integer.parseInt(orderID));
+                String title=adminMapper.getPubTitle(order.getPublicationID());
                 System.out.println("orderID:"+order.getOrderID());
                 System.out.println("distributorID:"+order.getDistributorID());
                 System.out.println("publicationID:"+order.getPublicationID());
+                System.out.println("Title:"+title);
                 System.out.println("numberOfCopies:"+order.getNumberOfCopies());
                 System.out.println("deliveryDate:"+order.getDeliveryDate());
                 System.out.println("orderDate:"+order.getOrderDate());

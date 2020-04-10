@@ -1,9 +1,6 @@
 package mapper;
 
-import entity.Distributor;
-import entity.Order;
-import entity.Payment;
-import entity.Staff;
+import entity.*;
 
 import java.util.Date;
 import java.util.List;
@@ -24,6 +21,8 @@ public interface AdminMapper {
     void placeOrder(int distributorID, int publicationID, int numberOfCopies, Date orderDate);
     //check order information
     Order checkOrder(int orderID);
+    //get publication title
+    String getPubTitle(int publicationID);
     //delete order(then re-calculate balance)
     void deleteOrder(int orderID);
     //update order(then update balance)
