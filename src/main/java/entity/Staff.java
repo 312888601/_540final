@@ -22,8 +22,8 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(int staffID, String name, int age, String gender, String phone, String emailAddress, boolean isPublisher, boolean isAdmin, String address, int paycheck, Date paycheckDate, String jobType) {
-        StaffID = staffID;
+    public Staff(int StaffID, String name, int age, String gender, String phone, String emailAddress, boolean isPublisher, boolean isAdmin, String address, int paycheck, Date paycheckDate, String jobType) {
+        this.StaffID = StaffID;
         this.name = name;
         this.age = age;
         this.gender = gender;

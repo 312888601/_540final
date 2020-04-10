@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.PublisherMapper">
+    <select id="getPubList" resultType="entity.Publication">
+        select * from Publication
+    </select>
+    <!-- Publication CRUD -->
+    <insert id="createPublication">
+    insert into Publication(ID,topic,title,editor,type)
+    values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5});
+    </insert>
+
+    <select id="findPubByID" resultType="entity.Publication">
+        select * from Publication
+        where ID=${ID};
+    </select>
+
+    <select id="findPubByTopic" resultType="entity.Publication">
+        select * from Publication
+        where topic='${param1}'
+    </select>
+
+    <delete id="deletePublication">
+        delete from Publication
+        where ID=${ID};
+    </delete>
+
+    <update id="updatePublication">
+        update Publication
+        set topic=#{param2},title=#{param3},editor=#{param4},type=#{param5}
+        where ID=#{param1}
+    </update>
+
+
+   <!-- Book CRUD -->
+
+
+    <insert id="createBook">
+        insert into BookInfo(ID,ISBN, edition, pubDate)
+         values (#{param1},#{param2}, #{param3}, #{param4});
+    </insert>
+    <delete id="deleteBook">
+        delete from BookInfo
+        where ID=${ID};
+    </delete>
+
+    <update id="updateBook">
+        update BookInfo
+        set ISBN=#{param2},edition=#{param3},pubDate=#{param4}
+        where ID=#{param1}
+    </update>
+
+    <select id="findBookByDate" resultType="entity.Book">
+        select * from BookInfo
+        where pubDate between #{param1} and #{param2}
+    </select>
+
+    <!-- PeriodPublication CRUD -->
+
+    <insert id="createPeriodPub">
+        insert into PeriodPubInfo(ID,date,Periodicity,textOfArticle)
+         values (#{param1},#{param2}, #{param3}, #{param4});
+    </insert>
+    <delete id="deletePeriodPub">
+        delete from PeriodPubInfo
+        where ID=${ID};
+    </delete>
+
+    <update id="updatePeriodPub">
+        update PeriodPubInfo
+        set date=#{param2},Periodicity=#{param3},textOfArticle=#{param4}
+        where ID=#{param1}
+    </update>
+
+</mapper>

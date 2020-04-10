@@ -4,15 +4,24 @@ public class Publication {
     private int ID;
     private String topic;
     private String title;
-    private int staffID;
-    private double price;
+    private String editor;
+    private String type;
 
-    public double getPrice() {
-        return price;
+
+    public String getEditor() {
+        return editor;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public String getType() {
+        return type;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getID() {
@@ -39,19 +48,13 @@ public class Publication {
         this.title = title;
     }
 
-    public int getStaffID() {
-        return staffID;
-    }
 
-    public void setStaffID(int staffID) {
-        this.staffID = staffID;
-    }
 
-    public Publication(int ID, String topic, String title, int staffID, double price) {
+    public Publication(int ID, String topic, String title, String editor, String type) {
         this.ID = ID;
         this.topic = topic;
         this.title = title;
-        this.staffID = staffID;
-        this.price = price;
+        this.editor = editor;
+        this.type = type;
     }
 }

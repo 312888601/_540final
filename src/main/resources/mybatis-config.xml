@@ -17,6 +17,7 @@
     <mappers>
         <mapper resource="mapper/DistributorMapper.xml"/>
         <mapper resource="mapper/AdminMapper.xml"/>
-        <mapper resource="=mapper/ReportMapper.xml"></mapper>
+        <mapper resource="mapper/EditorMapper.xml"/>
+        <mapper resource="mapper/PublisherMapper.xml"/>
     </mappers>
 </configuration>
