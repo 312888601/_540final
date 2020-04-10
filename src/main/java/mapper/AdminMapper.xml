@@ -59,6 +59,10 @@
     <select id="checkOrder" resultType="entity.Order">
         select * from OrderInfo where orderID=#{param1}
     </select>
+    <!--    get book title-->
+    <select id="getPubTitle" resultType="String">
+        select title from Publication where ID=#{param1}
+    </select>
     <!--    delete an order-->
     <delete id="deleteOrder">
         delete from OrderInfo
