@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ReportMapper">
+
+<!--    get total revenue-->
+    <select id="getTotalRevenue" resultType="integer">
+        select sum(totalPayment) from Payment;
+    </select>
+<!--    get total expense-->
+    <select id="getShippingCost" resultType="integer">
+        select sum (shippingCost) from OrderInfo;
+    </select>
+
+    <select id="getSalaries" resultType="integer">
+        select sum (paycheck) from mdong4.StaffInfo;
+    </select>
+
+    <select id="getTotalNumberOfDistributor" resultType="integer">
+        select count (distributorID) from Distributor
+    </select>
+
+    <select id="getRevenuePerDistributor" resultType="entity.Revenue">
+        SELECT Payment.orderID, distributorID, totalPayment
+        FROM Payment JOIN OrderInfo OI ON Payment.orderID = OI.orderID
+    </select>
+
+    <select id="getRevenuePerCity" resultType="entity.Revenue">
+        SELECT Payment.orderID, totalPayment, distributorID, city FROM Payment JOIN (SELECT orderID, OrderInfo.distributorID, city FROM OrderInfo
+    JOIN Distributor ON OrderInfo.distributorID=Distributor.distributorID) AS city ON Payment.orderID=city.orderID
+    </select>
+</mapper>
