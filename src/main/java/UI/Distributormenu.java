@@ -90,6 +90,10 @@ public class Distributormenu {
                 sqlSession.commit();
                 Distributormenu.print();
             }
+
+            case "6":{
+                Mainmenu.print();
+            }
         }
 
 

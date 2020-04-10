@@ -17,6 +17,8 @@ public class Staff {
     private String jobType;
 
     //constructors
+
+
     public Staff() {
     }
 

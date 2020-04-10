@@ -23,7 +23,7 @@ public class Mainmenu{
         System.out.println("5. Exit");
 
         Scanner scanner=new Scanner(System.in);
-        String a=scanner.next();
+        String a=scanner.nextLine();
         switch (a){
             case "1": Adminmenu.print();
             break;
