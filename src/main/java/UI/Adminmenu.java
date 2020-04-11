@@ -732,7 +732,7 @@ public class Adminmenu{
                 sqlSession.close();
                 Adminmenu.print();
             }
-            //calculate balence
+            //calculate the balance according to current data
             case "5010":{
                 System.out.println("Please enter distributorID:");
                 String distributorID=scanner.nextLine();
@@ -745,6 +745,7 @@ public class Adminmenu{
                     balance+=order_value;
                 }
                 adminMapper.updateBalance(Integer.parseInt(distributorID), balance);
+                System.out.println("The balance of the distributor is updated to"+balance);
                 sqlSession.commit();
                 sqlSession.close();
                 Adminmenu.print();

@@ -141,7 +141,7 @@ public class Distributormenu {
                 Distributormenu.print();
             }
 
-            //calculate balence
+            //calculate calculate the balance according to current data
             case "5010":{
                 System.out.println("Please enter distributorID:");
                 String distributorID=scanner.nextLine();
@@ -154,6 +154,7 @@ public class Distributormenu {
                     balance+=order_value;
                 }
                 adminMapper.updateBalance(Integer.parseInt(distributorID), balance);
+                System.out.println("The balance of the distributor is updated to"+balance);
                 sqlSession.commit();
                 sqlSession.close();
                 Distributormenu.print();
