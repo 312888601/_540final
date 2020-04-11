@@ -25,6 +25,7 @@ public class Distributormenu {
         System.out.println("5005. Calculate the total price of an order");
         System.out.println("5006. Pay an order");
         System.out.println("5010. Calculate the balance");
+        System.out.println("5011. Get all order information from me");
         System.out.println("6. return");
 
         Scanner scanner= new Scanner(System.in);
@@ -116,12 +117,12 @@ public class Distributormenu {
             case "5006": {
                 System.out.println("Please enter orderID:");
                 String orderID=scanner.nextLine();
-                System.out.println("Please enter payment:");
-                String totalPayment=scanner.nextLine();
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
                 try{
-                    adminMapper.payOrder(Integer.parseInt(orderID), Integer.parseInt(totalPayment));
+                    Order paidorder=adminMapper.checkOrder(Integer.parseInt(orderID));
+                    int bill=paidorder.getPricePerCopy()*paidorder.getNumberOfCopies()+paidorder.getShippingCost();
+                    adminMapper.payOrder(Integer.parseInt(orderID), bill);
                     Order targetorder=adminMapper.checkOrder(Integer.parseInt(orderID));
                     int distributorID=targetorder.getDistributorID();
                     List<Order> unpaidOrder=adminMapper.findUnpaidOrder(distributorID);
@@ -153,6 +154,29 @@ public class Distributormenu {
                     balance+=order_value;
                 }
                 adminMapper.updateBalance(Integer.parseInt(distributorID), balance);
+                sqlSession.commit();
+                sqlSession.close();
+                Distributormenu.print();
+            }
+            //Get all order information me
+            case "5011":{
+                System.out.println("Please enter distributorID:");
+                String distributorID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                List<Order> allorder=adminMapper.getOrderList(Integer.parseInt(distributorID));
+                for (Order order:allorder) {
+                    String title=adminMapper.getPubTitle(order.getPublicationID());
+                    System.out.println("orderID:"+order.getOrderID());
+                    System.out.println("distributorID:"+order.getDistributorID());
+                    System.out.println("publicationID:"+order.getPublicationID());
+                    System.out.println("Title:"+title);
+                    System.out.println("numberOfCopies:"+order.getNumberOfCopies());
+                    System.out.println("deliveryDate:"+order.getDeliveryDate());
+                    System.out.println("orderDate:"+order.getOrderDate());
+                    System.out.println("shippingCost:"+ order.getShippingCost());
+                    System.out.println("price per copy:"+ order.getPricePerCopy());
+                }
                 sqlSession.commit();
                 sqlSession.close();
                 Distributormenu.print();
