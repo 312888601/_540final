@@ -50,7 +50,7 @@ public class Adminmenu{
         System.out.println("5002. Update an order");
         System.out.println("5003. Check order information");
         System.out.println("5004. Delete an order");
-        System.out.println("5005. Bill an order");
+        System.out.println("5005. Calculate the total price of an order");
         System.out.println("5006. Pay an order");
         System.out.println("5007. Check all payment");
         System.out.println("5008. Check the order payment information");
