@@ -91,10 +91,10 @@
         select * from mdong4.OrderInfo where distributorID=#{ID}
     </select>
     <!--    pay an order-->
-    <update id="payOrder" parameterType="int">
+    <insert id="payOrder" parameterType="int">
         insert into Payment(orderID, totalPayment)
         values (#{param1},#{param2})
-    </update>
+    </insert>
     <!--    delete payment-->
     <delete id="deletePayment">
         delete from Payment
@@ -108,5 +108,10 @@
     <select id="checkAllPayment" resultType="entity.Payment">
         select * from Payment
     </select>
-
+    <!--    update payment-->
+    <update id="updatePayment">
+        update Payment
+        set totalPayment=#{param2}
+        where orderID=#{param1}
+    </update>
 </mapper>

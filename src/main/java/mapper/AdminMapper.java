@@ -40,7 +40,7 @@ public interface AdminMapper {
     //calculate balance 2.update the balance
     void updateBalance(int distributorID, int balance);
     //get all orders belongs to one distributor
-    List<Order> getOrderList(int ID);
+    List<Order> getOrderList(int distributorID);
     //pay an order (then calculate balance)
     void payOrder(int orderID, int totalPayment);
     //delete payment (then calculate balance)
@@ -49,4 +49,6 @@ public interface AdminMapper {
     Payment checkPayment(int orderID);
     //check all payment
     List<Payment> checkAllPayment();
+    //update payment
+    void updatePayment(int orderID, int totalPayment);
 }
