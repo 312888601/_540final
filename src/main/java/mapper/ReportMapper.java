@@ -1,4 +1,5 @@
 package mapper;
+import entity.Order;
 import entity.Revenue;
 import entity.Staff;
 
@@ -20,4 +21,7 @@ public interface ReportMapper {
     List<Revenue> getRevenuePerLocation();
     //get total payment per job type
     List<Staff> getTotalPaymentPerJobType();
+    //get number and total price of copies of each publication bought per distributor per month
+    List<Order> getOrderInfoForReport(int month);
+
 }

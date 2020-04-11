@@ -39,4 +39,11 @@
     <select id="getTotalPaymentPerJobType" resultType="entity.Staff">
         SELECT jobType, sum(paycheck) AS paycheck from StaffInfo GROUP BY jobType
     </select>
+
+    <select id="getOrderInfoForReport" resultType="entity.Order" parameterType="int">
+        SELECT distributorID, publicationID, sum(numberOfCopies) AS numberOfCopies, sum(numberOfCopies*pricePerCopy) AS total, orderDate
+        FROM OrderInfo
+        WHERE MONTH(orderDate)=#{month}
+        GROUP BY distributorID, publicationID;
+    </select>
 </mapper>

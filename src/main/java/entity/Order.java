@@ -11,6 +11,7 @@ public class Order {
     private java.sql.Date orderDate;
     private int shippingCost;
     private int pricePerCopy;
+    private int total;
 
     public int getOrderID() {
         return orderID;
@@ -72,10 +73,18 @@ public class Order {
 
     public void setPricePerCopy(int pricePerCopy) {this.pricePerCopy = pricePerCopy; }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
     public Order() {
     }
 
-    public Order(int orderID, int distributorID, int publicationID, int numberOfCopies, java.sql.Date deliveryDate, java.sql.Date orderDate, int shippingCost, int pricePerCopy) {
+    public Order(int orderID, int distributorID, int publicationID, int numberOfCopies, Date deliveryDate, Date orderDate, int shippingCost, int pricePerCopy, int total) {
         this.orderID = orderID;
         this.distributorID = distributorID;
         this.publicationID = publicationID;
@@ -84,5 +93,6 @@ public class Order {
         this.orderDate = orderDate;
         this.shippingCost = shippingCost;
         this.pricePerCopy = pricePerCopy;
+        this.total = total;
     }
 }
