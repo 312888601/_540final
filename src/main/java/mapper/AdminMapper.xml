@@ -25,10 +25,12 @@
         where StaffID=${StaffID}
     </delete>
 
-    <select id="getTotalBywork" resultType="integer">
-        select SUM(paycheck) from StaffInfo
-        where jobType LIKE "%${jobType}"
-    </select>
+    <update id="updatePaycheck">
+        update StaffInfo
+        set paycheck=#{param2}, paycheckDate=#{param3}
+        where StaffID=${param1}
+    </update>
+
 <!--Distributor CRUD-->
     <select id="getDistributorList" resultType="entity.Distributor">
         select * from mdong4.Distributor
