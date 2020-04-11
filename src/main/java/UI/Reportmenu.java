@@ -1,5 +1,6 @@
 package UI;
 
+import entity.Order;
 import entity.Staff;
 import mapper.ReportMapper;
 import org.apache.ibatis.session.SqlSession;
@@ -19,7 +20,8 @@ public class Reportmenu {
         System.out.println("5. Get total revenue per distributor");
         System.out.println("6. Get total revenue per location");
         System.out.println("7. Get total payment per job type");
-        System.out.println("8. ");
+        System.out.println("8. Get number and total price of copies of each publication bought per distributor per month");
+        System.out.println("9. return");
 
         Scanner scanner=new Scanner(System.in);
         String input = scanner.nextLine();
@@ -97,6 +99,28 @@ public class Reportmenu {
                 }
 
                 Reportmenu.print();
+            }
+            case "8":{
+                SqlSession sqlSession=MybatisUtils.getSqlsession();
+                ReportMapper reportMapper=sqlSession.getMapper(ReportMapper.class);
+                System.out.println("Please enter the month you want to lookup:");
+
+                String month=scanner.nextLine();
+                List<Order> orderList=reportMapper.getOrderInfoForReport(Integer.parseInt(month));
+
+                for (Order order : orderList) {
+                    System.out.println("-------------------");
+                    System.out.println("distributorID: "+order.getDistributorID());
+                    System.out.println("publicationID: "+order.getPublicationID());
+                    System.out.println("numberOfCopies: "+order.getNumberOfCopies());
+                    System.out.println("total: "+order.getTotal());
+                    System.out.println("order date: "+order.getOrderDate());
+                }
+                Reportmenu.print();
+            }
+
+            case "9":{
+                Mainmenu.print();
             }
 
 
