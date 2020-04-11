@@ -638,7 +638,7 @@ public class Adminmenu{
                 sqlSession.close();
                 Adminmenu.print();
             }
-            //bill order
+            //calculate order
             case "5005": {
                 System.out.println("Please enter orderID:");
                 String orderID=scanner.nextLine();
