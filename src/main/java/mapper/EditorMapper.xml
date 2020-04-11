@@ -3,5 +3,84 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.EditorMapper">
+    <select id="findEditorByID" resultType="entity.Staff">
+        select * from StaffInfo
+        where StaffID=#{param1}
+    </select>
+
+    <select id="findAutByName" resultType="entity.Staff">
+        select * from StaffInfo
+        where name=#{param1}
+    </select>
+
+    <!-- Articles/chapters CRUD -->
+    <insert id="createArticle">
+        insert into ArticleInfo(title, text, topic, date)
+         values (#{param1},#{param2}, #{param3}, #{param4})
+    </insert>
+
+    <delete id="deleteArticle">
+        delete from ArticleInfo
+        where title=#{param1}
+    </delete>
+
+    <update id="updateArticle">
+        update ArticleInfo
+        set text=#{param2}, topic=#{param3},date=#{param4}
+        where title=#{param1}
+    </update>
+    
+    
+    <insert id="writeArticle">
+        insert into Written_by(StaffID,title)
+        values(#{param1},#{param2})
+    </insert>
+
+    <update id="updateWrite">
+        update Written_by
+        set StaffID=#{param1}
+        where title=#{param2}
+    </update>
+
+    <delete id="deleteWrite">
+        delete from Written_by
+        where StaffID=#{param1} and title=#{param2}
+    </delete>
+
+    <insert id="publishArticle">
+        insert into Publish_on(PubID,title)
+        values(#{param1},#{param2})
+    </insert>
+
+    <delete id="unpublishArticle">
+        delete from Publish_on
+        where PubID=#{param1} and title=#{param2}
+    </delete>
+
+    <select id="findArtByID" resultType="entity.Written_by">
+        select * from Written_by
+        where StaffID=#{param1}
+    </select>
+
+    <select id="findArtByTitle" resultType="entity.Article">
+        select * from ArticleInfo
+        where title=#{param1}
+    </select>
+
+    <select id="findArtByTopic" resultType="entity.Article">
+        select * from ArticleInfo
+        where topic=#{param1}
+    </select>
+
+    <select id="findArtByDate" resultType="entity.Article">
+        select * from ArticleInfo
+        where date between #{param1} and #{param2}
+    </select>
+
+    <select id="findArtByAut" resultType="entity.Article">
+        select title from Written_by
+        where StaffID=#{param1}
+    </select>
+
 
 </mapper>

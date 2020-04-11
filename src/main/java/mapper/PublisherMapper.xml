@@ -20,12 +20,12 @@
 
     <select id="findPubByTopic" resultType="entity.Publication">
         select * from Publication
-        where topic='${param1}'
+        where topic=#{param1}
     </select>
 
     <delete id="deletePublication">
         delete from Publication
-        where ID=${ID};
+        where ID=#{param1}
     </delete>
 
     <update id="updatePublication">
@@ -34,6 +34,22 @@
         where ID=#{param1}
     </update>
 
+    <update id="updateEditor">
+        update Publication
+        set editor=#{param2}
+        where ID=#{param1}
+    </update>
+
+    <select id="findPubByEditor" resultType="entity.Publication" >
+        select * from Publication
+        where editor=#{param1}
+    </select>
+
+    <update id="editTextOfPeriodPub">
+        update PeriodPubInfo
+        set textOfArticle=#{param2}
+        where ID=#{param1}
+    </update>
 
    <!-- Book CRUD -->
 
@@ -74,5 +90,7 @@
         set date=#{param2},Periodicity=#{param3},textOfArticle=#{param4}
         where ID=#{param1}
     </update>
+
+
 
 </mapper>

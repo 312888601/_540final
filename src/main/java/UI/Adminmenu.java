@@ -45,6 +45,8 @@ public class Adminmenu{
         System.out.println("4007. Update a PeriodPublication");
         System.out.println("4008. Find publication by topic");
         System.out.println("4009. Find book by date");
+        System.out.println("4010. Assign editor to a publication");
+
 
         System.out.println("5001. Place an order");
         System.out.println("5002. Update an order");
@@ -539,6 +541,22 @@ public class Adminmenu{
                 sqlSession.close();
                 Adminmenu.print();
             }
+
+
+            case "4010":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                System.out.println("Please enter  ID:");
+                String ID=scanner.nextLine();
+                System.out.println("Please enter editor:");
+                String editor=scanner.nextLine();
+                publisherMapper.updateEditor(Integer.parseInt(ID),editor);
+                sqlSession.commit();
+                sqlSession.close();
+                Adminmenu.print();
+            }
+
+
 
             //create order
             case "5001":{
