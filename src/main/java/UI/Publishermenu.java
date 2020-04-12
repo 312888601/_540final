@@ -513,6 +513,7 @@ public class Publishermenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();

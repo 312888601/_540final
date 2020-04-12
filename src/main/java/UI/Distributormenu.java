@@ -135,6 +135,7 @@ public class Distributormenu {
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
