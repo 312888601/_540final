@@ -16,15 +16,6 @@ import java.util.Scanner;
 
 public class Adminmenu{
     public static void print(){
-        System.out.println(" -------------------------- ");
-        System.out.println("1. Get all staff information");
-        System.out.println("2. Get all editor information");
-        System.out.println("3. Get all publisher information");
-        System.out.println("4. delete an Editor account");
-        System.out.println("5. Create a Publisher account");
-        System.out.println("6. Update a Publisher account");
-        System.out.println("7. delete an Publisher account");
-
         System.out.println("1001. Check all staff information");
         System.out.println("1002. Update a staff account");
         System.out.println("1003. Create a staff account");
@@ -43,12 +34,10 @@ public class Adminmenu{
         System.out.println("2010. Find articles by author");
         System.out.println("2011. Find articles by date");
 
-
         System.out.println("3001. Check all distributor information");
         System.out.println("3002. Update a distributor account");
         System.out.println("3003. Create a distributor account");
         System.out.println("3004. Delete a distributor account");
-
 
         System.out.println("4001. Get all Publication information");
         System.out.println("4002. Create new book");
@@ -75,46 +64,12 @@ public class Adminmenu{
         System.out.println("5011. Get all order information from one distributor");
 
 
-        System.out.println("8. return");
+        System.out.println("0. return");
 
         Scanner scanner=new Scanner(System.in);
         String a =scanner.nextLine();
 
         switch (a){
-            case "1": {
-                SqlSession sqlSession= MybatisUtils.getSqlsession();
-                AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
-                List<Staff> staffList=adminMapper.getStaffList();
-
-                for (Staff staff : staffList) {
-                    System.out.println("-----------------------");
-                    System.out.println("personnelID: "+staff.getStaffID());
-                    System.out.println("Name: "+staff.getName());
-                    System.out.println("Age: "+staff.getAge());
-                    System.out.println("Gender: "+staff.getGender());
-                    System.out.println("job type: "+staff.getJobType());
-                    System.out.println("Phone: "+staff.getPhone());
-                    System.out.println("Email address: "+staff.getEmailAddress());
-                    System.out.println("paycheck: "+staff.getPaycheck());
-                    System.out.println("paycheck date: "+staff.getPaycheckDate());
-                }
-
-                sqlSession.close();
-                Adminmenu.print();
-            }
-
-            case "2":
-
-            case "3":
-
-            case "4":
-
-            case "5":
-
-            case "6":
-
-            case "7":
-
             case "1001":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
@@ -211,7 +166,6 @@ public class Adminmenu{
                 sqlSession.commit();
                 sqlSession.close();
                 Adminmenu.print();
-
             }
             case "1004":{
                 System.out.println("Please enter the Staff ID you want to delete:");
@@ -222,7 +176,6 @@ public class Adminmenu{
                 sqlSession.commit();
                 sqlSession.close();
                 Adminmenu.print();
-
             }
 
             case "1005":{
@@ -240,8 +193,6 @@ public class Adminmenu{
                 sqlSession.commit();
                 sqlSession.close();
                 Adminmenu.print();
-
-
             }
 
             case "2001":{
@@ -265,7 +216,6 @@ public class Adminmenu{
                 Editormenu.print();
             }
 
-
             case "2002":{
                 System.out.println("Please enter your StaffID:");
                 String ID=scanner.nextLine();
@@ -280,7 +230,6 @@ public class Adminmenu{
                 sqlSession.close();
                 Editormenu.print();
             }
-
 
             case "2003":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -1056,7 +1005,7 @@ public class Adminmenu{
                 Adminmenu.print();
             }
 
-            case "8": Mainmenu.print();
+            case "0": Mainmenu.print();
 
         }
     }

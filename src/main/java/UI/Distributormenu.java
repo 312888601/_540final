@@ -14,52 +14,18 @@ import java.util.Scanner;
 
 public class Distributormenu {
     public static void print(){
-        System.out.println(" -------------------------- ");
-        System.out.println("1. Check my information");
-        System.out.println("2. Check all publication IDs");
-        System.out.println("4. Get orders belong to me");
-
-
         System.out.println("5001. Place an order");
         System.out.println("5003. Check order information");
         System.out.println("5005. Calculate the total price of an order");
         System.out.println("5006. Pay an order");
         System.out.println("5010. Calculate the balance");
         System.out.println("5011. Get all order information from me");
-        System.out.println("6. return");
+        System.out.println("0. return");
 
         Scanner scanner= new Scanner(System.in);
         String input=scanner.nextLine();
 
         switch (input){
-            case "1":{
-                System.out.println("Please enter your ID:");
-                String ID=scanner.nextLine();
-
-                SqlSession sqlSession= MybatisUtils.getSqlsession();
-                DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
-                Distributor distributor=distributorMapper.getDistributor(Integer.parseInt(ID));
-
-                System.out.println("distributorID:"+distributor.getDistributorID());
-                System.out.println("name:"+distributor.getName());
-                System.out.println("type:"+distributor.getType());
-                System.out.println("street address:"+distributor.getStreetAddress());
-                System.out.println("city:"+distributor.getCity());
-                System.out.println("phone number:"+distributor.getPhoneNumber());
-                System.out.println("contact person:"+distributor.getContactPerson());
-                System.out.println("balance:"+distributor.getBalance());
-                Distributormenu.print();
-            }
-            case "2":{
-                SqlSession sqlSession= MybatisUtils.getSqlsession();
-                DistributorMapper distributorMapper=sqlSession.getMapper(DistributorMapper.class);
-                List<Integer> IDList=distributorMapper.getPublicationList();
-                for (Integer integer : IDList) {
-                    System.out.println("ID: "+integer.toString());
-                }
-                Distributormenu.print();
-            }
-
             //create order
             case "5001":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -183,7 +149,7 @@ public class Distributormenu {
                 Distributormenu.print();
             }
 
-            case "6":{
+            case "0":{
                 Mainmenu.print();
             }
         }
