@@ -6,6 +6,15 @@ public class Book {
     private  int ISBN;
     private  String edition;
     private  Date pubDate;
+    private  String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public int getID() {
         return ID;
@@ -39,10 +48,12 @@ public class Book {
         this.pubDate = pubDate;
     }
 
-    public Book(int ID, int ISBN, String edition, Date pubDate) {
+
+    public Book(int ID, int ISBN, String edition, Date pubDate, String author) {
         this.ID = ID;
         this.ISBN = ISBN;
         this.edition = edition;
         this.pubDate = pubDate;
+        this.author = author;
     }
 }

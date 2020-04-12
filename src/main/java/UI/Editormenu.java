@@ -2,8 +2,6 @@ package UI;
 
 import entity.*;
 
-import mapper.AdminMapper;
-import mapper.DistributorMapper;
 import mapper.EditorMapper;
 import mapper.PublisherMapper;
 import org.apache.ibatis.session.SqlSession;
@@ -104,6 +102,7 @@ public class Editormenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -130,6 +129,7 @@ public class Editormenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();

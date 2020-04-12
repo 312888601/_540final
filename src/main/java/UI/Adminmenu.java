@@ -4,6 +4,7 @@ import entity.*;
 
 import mapper.AdminMapper;
 import mapper.DistributorMapper;
+import mapper.EditorMapper;
 import mapper.PublisherMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
@@ -30,6 +31,19 @@ public class Adminmenu{
         System.out.println("1004. Delete a staff account");
         System.out.println("1005. Enter payment for editor or author");
 
+        System.out.println("2001. Find the editing work assigned to me");
+        System.out.println("2002. Check my payment");
+        System.out.println("2003. Edit one of my work's text");
+        System.out.println("2004. Create an article or a chapter");
+        System.out.println("2005. Update an article or a chapter");
+        System.out.println("2006. Delete an article or a chapter");
+        System.out.println("2007. Publish an article or add a chapter");
+        System.out.println("2008. Unpublish an article or delete a chapter");
+        System.out.println("2009. Find articles by topic");
+        System.out.println("2010. Find articles by author");
+        System.out.println("2011. Find articles by date");
+
+
         System.out.println("3001. Check all distributor information");
         System.out.println("3002. Update a distributor account");
         System.out.println("3003. Create a distributor account");
@@ -46,7 +60,7 @@ public class Adminmenu{
         System.out.println("4008. Find publication by topic");
         System.out.println("4009. Find book by date");
         System.out.println("4010. Assign editor to a publication");
-
+        System.out.println("4011. Find book by author");
 
         System.out.println("5001. Place an order");
         System.out.println("5002. Update an order");
@@ -230,6 +244,218 @@ public class Adminmenu{
 
             }
 
+            case "2001":{
+                System.out.println("Please enter your StaffID:");
+                String ID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                Staff staff = editorMapper.findEditorByID(Integer.parseInt(ID));
+                List<Publication> pubList=publisherMapper.findPubByEditor(staff.getName());
+
+                for (Publication pub:pubList) {
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+pub.getID());
+                    System.out.println("Title: "+pub.getTitle());
+                    System.out.println("Topic: "+pub.getTopic());
+                    System.out.println("Editor: "+pub.getEditor());
+                    System.out.println("Type: "+pub.getType());
+                }
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+
+            case "2002":{
+                System.out.println("Please enter your StaffID:");
+                String ID=scanner.nextLine();
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                Staff staff = editorMapper.findEditorByID(Integer.parseInt(ID));
+                System.out.println("-----------------------");
+                System.out.println("staffID: "+ staff.getStaffID());
+                System.out.println("name: "+staff.getName());
+                System.out.println("paycheck: "+staff.getPaycheck());
+                System.out.println("paycheckDate: "+staff.getPaycheckDate());
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+
+            case "2003":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                System.out.println("Please enter Publication ID:");
+                String ID=scanner.nextLine();
+                System.out.println("Please enter textOfArticle:");
+                String textOfArticle=scanner.nextLine();
+                publisherMapper.editTextOfPeriodPub(Integer.parseInt(ID),textOfArticle);
+                sqlSession.commit();
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+            case "2004":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                System.out.println("Please enter  text:");
+                String text=scanner.nextLine();
+                System.out.println("Please enter topic:");
+                String topic=scanner.nextLine();
+                System.out.println("Please enter date(YYYY-MM-DD):");
+                String date=scanner.nextLine();
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
+                try {
+                    editorMapper.createArticle(title, text, topic, Date.valueOf(date));
+                    Staff aut = editorMapper.findAutByName(author);
+                    editorMapper.writeArticle(aut.getStaffID(), title);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+            case "2005":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                System.out.println("Please enter  text:");
+                String text=scanner.nextLine();
+                System.out.println("Please enter topic:");
+                String topic=scanner.nextLine();
+                System.out.println("Please enter date(YYYY-MM-DD):");
+                String date=scanner.nextLine();
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
+                try {
+                    editorMapper.updateArticle(title, text, topic, Date.valueOf(date));
+                    Staff aut = editorMapper.findAutByName(author);
+                    editorMapper.updateWrite(aut.getStaffID(), title);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+            case "2006":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
+                try {
+                    Staff aut = editorMapper.findAutByName(author);
+                    editorMapper.deleteWrite(aut.getStaffID(), title);
+                    editorMapper.deleteArticle(title);
+                    sqlSession.commit();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    sqlSession.rollback();
+                }
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+            case "2007":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter Publication ID:");
+                String ID=scanner.nextLine();
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                editorMapper.publishArticle(Integer.parseInt(ID),title);
+                sqlSession.commit();
+                sqlSession.close();
+                Editormenu.print();
+
+            }
+
+            case "2008":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter Publication ID:");
+                String ID=scanner.nextLine();
+                System.out.println("Please enter title:");
+                String title=scanner.nextLine();
+                editorMapper.unpublishArticle(Integer.parseInt(ID),title);
+                sqlSession.commit();
+                sqlSession.close();
+                Editormenu.print();
+            }
+
+            case "2009":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter topic:");
+                String topic=scanner.nextLine();
+                List<Article> artList=editorMapper.findArtByTopic(topic);
+
+                for (Article article:artList) {
+
+                    System.out.println("-----------------------");
+                    System.out.println("Title: "+article.getTitle());
+                    System.out.println("Text: "+article.getText());
+                    System.out.println("Topic: "+article.getTopic());
+                    System.out.println("Date: "+article.getDate());
+                }
+                Editormenu.print();
+            }
+
+            case "2010":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
+                Staff aut = editorMapper.findAutByName(author);
+                List<Written_by> wrtList=editorMapper.findArtByID(aut.getStaffID());
+
+                for (Written_by wrt:wrtList) {
+                    Article article=editorMapper.findArtByTitle(wrt.getTitle());
+                    System.out.println("-----------------------");
+                    System.out.println("Title: "+article.getTitle());
+                    System.out.println("Text: "+article.getText());
+                    System.out.println("Topic: "+article.getTopic());
+                    System.out.println("Date: "+article.getDate());
+                }
+                Editormenu.print();
+            }
+            case "2011":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
+                System.out.println("Please enter start date(YYYY-MM-DD):");
+                String startdate=scanner.nextLine();
+                System.out.println("Please enter end date(YYYY-MM-DD):");
+                String enddate=scanner.nextLine();
+                List<Article> artList=editorMapper.findArtByDate(Date.valueOf(startdate),Date.valueOf(enddate));
+
+                for (Article article:artList) {
+
+                    System.out.println("-----------------------");
+                    System.out.println("Title: "+article.getTitle());
+                    System.out.println("Text: "+article.getText());
+                    System.out.println("Topic: "+article.getTopic());
+                    System.out.println("Date: "+article.getDate());
+                }
+                Editormenu.print();
+            }
+
+
+
+
 
             case "3001": {
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -352,14 +578,17 @@ public class Adminmenu{
                 String ISBN=scanner.nextLine();
                 System.out.println("Please enter edtion:");
                 String edition=scanner.nextLine();
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
                 System.out.println("Please enter date(YYYY-MM-DD):");
                 String date=scanner.nextLine();
                 try {
                     publisherMapper.createPublication(Integer.parseInt(ID), topic, title, editor, type);
-                    publisherMapper.createBook(Integer.parseInt(ID), Integer.parseInt(ISBN), edition, Date.valueOf(date));
+                    publisherMapper.createBook(Integer.parseInt(ID), Integer.parseInt(ISBN), edition, Date.valueOf(date),author);
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -378,6 +607,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -401,14 +631,17 @@ public class Adminmenu{
                 String ISBN=scanner.nextLine();
                 System.out.println("Please enter edtion:");
                 String edition=scanner.nextLine();
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
                 System.out.println("Please enter date(YYYY-MM-DD):");
                 String date=scanner.nextLine();
                 try {
                     publisherMapper.updatePublication(Integer.parseInt(ID), topic, title, editor, type);
-                    publisherMapper.updateBook(Integer.parseInt(ID), Integer.parseInt(ISBN), edition, Date.valueOf(date));
+                    publisherMapper.updateBook(Integer.parseInt(ID), Integer.parseInt(ISBN), edition, Date.valueOf(date),author);
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -441,6 +674,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -459,6 +693,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -490,6 +725,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -537,6 +773,7 @@ public class Adminmenu{
                     System.out.println("ISBN: "+book.getISBN());
                     System.out.println("Edition: "+book.getEdition());
                     System.out.println("Pubdate: "+book.getPubDate());
+                    System.out.println("Author: "+book.getAuthor());
                 }
                 sqlSession.close();
                 Adminmenu.print();
@@ -557,6 +794,29 @@ public class Adminmenu{
             }
 
 
+            case  "4011":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+                System.out.println("Please enter author:");
+                String author=scanner.nextLine();
+
+                List<Book> bookList=publisherMapper.findBookByAut(author);
+
+                for (Book book:bookList) {
+                    Publication pub = publisherMapper.findPubByID(book.getID());
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+pub.getID());
+                    System.out.println("Title: "+pub.getTitle());
+                    System.out.println("Topic: "+pub.getTopic());
+                    System.out.println("Editor: "+pub.getEditor());
+                    System.out.println("ISBN: "+book.getISBN());
+                    System.out.println("Edition: "+book.getEdition());
+                    System.out.println("Pubdate: "+book.getPubDate());
+                    System.out.println("Author: "+book.getAuthor());
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
 
             //create order
             case "5001":{
@@ -605,6 +865,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -651,6 +912,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -691,6 +953,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();
@@ -745,6 +1008,7 @@ public class Adminmenu{
                     sqlSession.commit();
                 }
                 catch (Exception e){
+                    e.printStackTrace();
                     sqlSession.rollback();
                 }
                 sqlSession.close();

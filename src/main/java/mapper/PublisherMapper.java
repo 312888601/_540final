@@ -17,9 +17,9 @@ public interface PublisherMapper {
     void deletePublication(int ID);
     void updateEditor(int ID,String editor);
     Publication findPubByID(int ID);
-    void createBook(int ID,int ISBN, String edition, Date pubDate);
+    void createBook(int ID,int ISBN, String edition, Date pubDate,String author);
     void deleteBook(int ID);
-    void updateBook(int ID,int ISBN, String edition, Date pubDate);
+    void updateBook(int ID,int ISBN, String edition, Date pubDate,String author);
     void editTextOfPeriodPub(int ID, String textOfArticle);
     List<Book> findBookByDate(Date startDate, Date endDate);
     void createPeriodPub(int ID,Date date, String Periodicity, String textOfArticle);

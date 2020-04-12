@@ -55,8 +55,8 @@
 
 
     <insert id="createBook">
-        insert into BookInfo(ID,ISBN, edition, pubDate)
-         values (#{param1},#{param2}, #{param3}, #{param4});
+        insert into BookInfo(ID,ISBN, edition, pubDate,author)
+         values (#{param1},#{param2}, #{param3}, #{param4},#{param5});
     </insert>
     <delete id="deleteBook">
         delete from BookInfo
@@ -65,7 +65,7 @@
 
     <update id="updateBook">
         update BookInfo
-        set ISBN=#{param2},edition=#{param3},pubDate=#{param4}
+        set ISBN=#{param2},edition=#{param3},pubDate=#{param4},author=#{param5}
         where ID=#{param1}
     </update>
 
@@ -74,6 +74,10 @@
         where pubDate between #{param1} and #{param2}
     </select>
 
+    <select id="findBookByAut" resultType="entity.Book">
+        select * from BookInfo
+        where author=#{param1}
+    </select>
     <!-- PeriodPublication CRUD -->
 
     <insert id="createPeriodPub">
