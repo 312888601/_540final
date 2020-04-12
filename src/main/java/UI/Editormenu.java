@@ -14,24 +14,24 @@ import java.util.Scanner;
 public class Editormenu{
     public static void print(){
         System.out.println(" -------------------------- ");
-        System.out.println("1. Find the editing work assigned to me");
-        System.out.println("2. Check my payment");
-        System.out.println("3. Edit one of my work's text");
-        System.out.println("4. Create an article or a chapter");
-        System.out.println("5. Update an article or a chapter");
-        System.out.println("6. Delete an article or a chapter");
-        System.out.println("7. Publish an article or add a chapter");
-        System.out.println("8. Unpublish an article or delete a chapter");
-        System.out.println("9. Find articles by topic");
-        System.out.println("10. Find articles by author");
-        System.out.println("11. Find articles by date");
-        System.out.println("12. return");
+        System.out.println("2001. Find the editing work assigned to me");
+        System.out.println("2002. Check my payment");
+        System.out.println("2003. Edit one of my work's text");
+        System.out.println("2004. Create an article or a chapter");
+        System.out.println("2005. Update an article or a chapter");
+        System.out.println("2006. Delete an article or a chapter");
+        System.out.println("2007. Publish an article or add a chapter");
+        System.out.println("2008. Unpublish an article or delete a chapter");
+        System.out.println("2009. Find articles by topic");
+        System.out.println("2010. Find articles by author");
+        System.out.println("2011. Find articles by date");
+        System.out.println("2012. return");
 
         Scanner scanner=new Scanner(System.in);
         String a =scanner.nextLine();
 
         switch (a){
-            case "1":{
+            case "2001":{
                 System.out.println("Please enter your StaffID:");
                 String ID=scanner.nextLine();
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -53,7 +53,7 @@ public class Editormenu{
             }
 
 
-            case "2":{
+            case "2002":{
                 System.out.println("Please enter your StaffID:");
                 String ID=scanner.nextLine();
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -69,7 +69,7 @@ public class Editormenu{
             }
 
 
-            case "3":{
+            case "2003":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
                 System.out.println("Please enter Publication ID:");
@@ -82,7 +82,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "4":{
+            case "2004":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter title:");
@@ -109,7 +109,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "5":{
+            case "2005":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter title:");
@@ -136,7 +136,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "6":{
+            case "2006":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter title:");
@@ -157,7 +157,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "7":{
+            case "2007":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter Publication ID:");
@@ -171,7 +171,7 @@ public class Editormenu{
 
             }
 
-            case "8":{
+            case "2008":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter Publication ID:");
@@ -184,7 +184,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "9":{
+            case "2009":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter topic:");
@@ -202,7 +202,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "10":{
+            case "2010":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter author:");
@@ -220,7 +220,7 @@ public class Editormenu{
                 }
                 Editormenu.print();
             }
-            case "11":{
+            case "2011":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 EditorMapper editorMapper=sqlSession.getMapper(EditorMapper.class);
                 System.out.println("Please enter start date(YYYY-MM-DD):");
@@ -240,7 +240,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "12":{
+            case "2012":{
                 Mainmenu.print();
             }
 
