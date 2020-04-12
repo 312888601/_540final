@@ -25,7 +25,7 @@ public class Editormenu{
         System.out.println("2009. Find articles by topic");
         System.out.println("2010. Find articles by author");
         System.out.println("2011. Find articles by date");
-        System.out.println("2012. return");
+        System.out.println("0. return");
 
         Scanner scanner=new Scanner(System.in);
         String a =scanner.nextLine();
@@ -240,7 +240,7 @@ public class Editormenu{
                 Editormenu.print();
             }
 
-            case "2012":{
+            case "0":{
                 Mainmenu.print();
             }
 
