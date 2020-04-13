@@ -330,6 +330,8 @@ public class Publishermenu{
             case "5001":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
                 AdminMapper adminMapper=sqlSession.getMapper(AdminMapper.class);
+                System.out.println("Please enter  order ID:");
+                String orderID=scanner.nextLine();
                 System.out.println("Please enter  distributor ID:");
                 String distributorID=scanner.nextLine();
                 System.out.println("Please enter publication ID:");
@@ -338,7 +340,7 @@ public class Publishermenu{
                 String numberOfCopies=scanner.nextLine();
                 System.out.println("Please enter current date(YYYY-MM-DD):");
                 String orderDate=scanner.nextLine();
-                adminMapper.placeOrder(Integer.parseInt(distributorID),Integer.parseInt(publicationID),Integer.parseInt(numberOfCopies), Date.valueOf(orderDate));
+                adminMapper.placeOrder(Integer.parseInt(orderID),Integer.parseInt(distributorID),Integer.parseInt(publicationID),Integer.parseInt(numberOfCopies), Date.valueOf(orderDate));
                 sqlSession.commit();
                 sqlSession.close();
                 Publishermenu.print();

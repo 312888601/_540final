@@ -54,8 +54,8 @@
     <!--    place an order-->
     <insert id="placeOrder">
         insert into
-        OrderInfo(distributorID, publicationID, numberOfCopies, deliveryDate, orderDate, shippingCost, pricePerCopy)
-        values (#{param1}, #{param2}, #{param3}, null, #{param4}, 0, 0)
+        OrderInfo(orderID, distributorID, publicationID, numberOfCopies, deliveryDate, orderDate, shippingCost, pricePerCopy)
+        values (#{param1}, #{param2}, #{param3}, #{param4}, null, #{param5}, 0, 0)
     </insert>
     <!--    check order information-->
     <select id="checkOrder" resultType="entity.Order">

@@ -26,7 +26,7 @@ public interface AdminMapper {
     //delete a distributor account
     void deleteDistributor(int distributorID);
     //place order
-    void placeOrder(int distributorID, int publicationID, int numberOfCopies, Date orderDate);
+    void placeOrder(int orderID, int distributorID, int publicationID, int numberOfCopies, Date orderDate);
     //check order information
     Order checkOrder(int orderID);
     //get publication title
