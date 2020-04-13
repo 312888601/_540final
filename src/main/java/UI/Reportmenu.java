@@ -34,6 +34,7 @@ public class Reportmenu {
 
                 System.out.println("Total revenue: "+revenue);
 
+                sqlSession.close();
                 Reportmenu.print();
             }
             case "2":{
@@ -46,6 +47,7 @@ public class Reportmenu {
                 System.out.println("Shipping cost: "+shippingCost);
                 System.out.println("Total expense: "+(salaries+shippingCost));
 
+                sqlSession.close();
                 Reportmenu.print();
             }
             case "3":{
@@ -64,6 +66,8 @@ public class Reportmenu {
                 for (Revenue revenue : revenueList) {
                     System.out.println("city: "+revenue.getCity()+"\t"+"Revenue: "+revenue.getTotalPayment());
                 }
+
+                sqlSession.close();
                 Reportmenu.print();
             }
             case "5":{
@@ -75,6 +79,7 @@ public class Reportmenu {
                     System.out.println("DistributorId: "+revenue.getDistributorID()+"\t"+"Revenue: "+revenue.getTotalPayment());
                 }
 
+                sqlSession.close();
                 Reportmenu.print();
             }
             case "6":{
@@ -86,6 +91,7 @@ public class Reportmenu {
                     System.out.println("Loacation: "+revenue.getStreetAddress()+"\t"+"Revenue: "+revenue.getTotalPayment());
                 }
 
+                sqlSession.close();
                 Reportmenu.print();
             }
 
@@ -98,6 +104,7 @@ public class Reportmenu {
                     System.out.println("job type: "+staff.getJobType()+"\t"+"Total payment: "+staff.getPaycheck());
                 }
 
+                sqlSession.close();
                 Reportmenu.print();
             }
             case "8":{
@@ -116,6 +123,8 @@ public class Reportmenu {
                     System.out.println("total: "+order.getTotal());
                     System.out.println("order date: "+order.getOrderDate());
                 }
+
+                sqlSession.close();
                 Reportmenu.print();
             }
 

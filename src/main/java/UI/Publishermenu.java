@@ -43,7 +43,7 @@ public class Publishermenu{
 
 
 
-        System.out.println("8. return");
+        System.out.println("0. return");
 
         Scanner scanner=new Scanner(System.in);
         String a =scanner.nextLine();
@@ -563,7 +563,7 @@ public class Publishermenu{
                 Publishermenu.print();
             }
 
-            case "8": Mainmenu.print();
+            case "0": Mainmenu.print();
         }
     }
 }
