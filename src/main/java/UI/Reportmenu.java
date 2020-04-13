@@ -21,7 +21,7 @@ public class Reportmenu {
         System.out.println("6. Get total revenue per location");
         System.out.println("7. Get total payment per job type");
         System.out.println("8. Get number and total price of copies of each publication bought per distributor per month");
-        System.out.println("9. Return");
+        System.out.println("0. Return");
 
         Scanner scanner=new Scanner(System.in);
         String input = scanner.nextLine();
@@ -128,7 +128,7 @@ public class Reportmenu {
                 Reportmenu.print();
             }
 
-            case "9":{
+            case "0":{
                 Mainmenu.print();
             }
 
