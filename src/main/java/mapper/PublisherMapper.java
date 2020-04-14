@@ -28,4 +28,6 @@ public interface PublisherMapper {
     List<Publication> findPubByTopic(String topic);
     List<Publication> findPubByEditor(String edtior);
     List<Book> findBookByAut(String author);
+    List<Book> getAllBook();
+    List<PeriodPub> getAllPeriod();
 }

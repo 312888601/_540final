@@ -95,6 +95,13 @@
         where ID=#{param1}
     </update>
 
+    <select id="getAllBook" resultType="entity.Book">
+        select * from BookInfo
+    </select>
+
+    <select id="getAllPeriod" resultType="entity.PeriodPub">
+        select * from PeriodPubInfo
+    </select>
 
 
 </mapper>

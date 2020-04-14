@@ -50,6 +50,8 @@ public class Adminmenu{
         System.out.println("4009. Find book by date");
         System.out.println("4010. Assign editor to a publication");
         System.out.println("4011. Find book by author");
+        System.out.println("4012. Get all books");
+        System.out.println("4013. Get all Period publications");
 
         System.out.println("5001. Place an order");
         System.out.println("5002. Update an order");
@@ -213,7 +215,7 @@ public class Adminmenu{
                     System.out.println("Type: "+pub.getType());
                 }
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2002":{
@@ -228,7 +230,7 @@ public class Adminmenu{
                 System.out.println("paycheck: "+staff.getPaycheck());
                 System.out.println("paycheckDate: "+staff.getPaycheckDate());
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2003":{
@@ -241,7 +243,7 @@ public class Adminmenu{
                 publisherMapper.editTextOfPeriodPub(Integer.parseInt(ID),textOfArticle);
                 sqlSession.commit();
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2004":{
@@ -268,7 +270,7 @@ public class Adminmenu{
                     sqlSession.rollback();
                 }
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2005":{
@@ -295,7 +297,7 @@ public class Adminmenu{
                     sqlSession.rollback();
                 }
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2006":{
@@ -316,7 +318,7 @@ public class Adminmenu{
                     sqlSession.rollback();
                 }
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2007":{
@@ -329,7 +331,7 @@ public class Adminmenu{
                 editorMapper.publishArticle(Integer.parseInt(ID),title);
                 sqlSession.commit();
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
 
             }
 
@@ -343,7 +345,7 @@ public class Adminmenu{
                 editorMapper.unpublishArticle(Integer.parseInt(ID),title);
                 sqlSession.commit();
                 sqlSession.close();
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2009":{
@@ -361,7 +363,7 @@ public class Adminmenu{
                     System.out.println("Topic: "+article.getTopic());
                     System.out.println("Date: "+article.getDate());
                 }
-                Editormenu.print();
+                Adminmenu.print();
             }
 
             case "2010":{
@@ -380,7 +382,7 @@ public class Adminmenu{
                     System.out.println("Topic: "+article.getTopic());
                     System.out.println("Date: "+article.getDate());
                 }
-                Editormenu.print();
+                Adminmenu.print();
             }
             case "2011":{
                 SqlSession sqlSession= MybatisUtils.getSqlsession();
@@ -399,7 +401,7 @@ public class Adminmenu{
                     System.out.println("Topic: "+article.getTopic());
                     System.out.println("Date: "+article.getDate());
                 }
-                Editormenu.print();
+                Adminmenu.print();
             }
 
 
@@ -766,6 +768,51 @@ public class Adminmenu{
                 sqlSession.close();
                 Adminmenu.print();
             }
+
+            case  "4012":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+
+
+                List<Book> bookList=publisherMapper.getAllBook();
+
+                for (Book book:bookList) {
+                    Publication pub = publisherMapper.findPubByID(book.getID());
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+pub.getID());
+                    System.out.println("Title: "+pub.getTitle());
+                    System.out.println("Topic: "+pub.getTopic());
+                    System.out.println("Editor: "+pub.getEditor());
+                    System.out.println("ISBN: "+book.getISBN());
+                    System.out.println("Edition: "+book.getEdition());
+                    System.out.println("Pubdate: "+book.getPubDate());
+                    System.out.println("Author: "+book.getAuthor());
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+
+            case  "4013":{
+                SqlSession sqlSession= MybatisUtils.getSqlsession();
+                PublisherMapper publisherMapper=sqlSession.getMapper(PublisherMapper.class);
+
+                List<PeriodPub> ppList = publisherMapper.getAllPeriod();
+
+                for (PeriodPub pp:ppList) {
+                    Publication pub = publisherMapper.findPubByID(pp.getID());
+                    System.out.println("-----------------------");
+                    System.out.println("ID: "+pub.getID());
+                    System.out.println("Title: "+pub.getTitle());
+                    System.out.println("Topic: "+pub.getTopic());
+                    System.out.println("Editor: "+pub.getEditor());
+                    System.out.println("Date: "+pp.getDate());
+                    System.out.println("Periodicity: "+pp.getPeriodicity());
+                    System.out.println("TextOfArticle: "+pp.getTextOfArticle());
+                }
+                sqlSession.close();
+                Adminmenu.print();
+            }
+
 
             //create order
             case "5001":{
