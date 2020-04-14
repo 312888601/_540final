@@ -108,9 +108,9 @@ public class Adminmenu{
                 String phone=scanner.nextLine();
                 System.out.println("Please enter new email Address:");
                 String emailAddress=scanner.nextLine();
-                System.out.println("Please confirm whether it is Publisher(use 1 or 0):");
+                System.out.println("Please confirm whether it is Publisher(use true or false):");
                 String isPublisher =scanner.nextLine();
-                System.out.println("Please confirm whether it is Admin(use 1 or 0):");
+                System.out.println("Please confirm whether it is Admin(use true or false):");
                 String isAdmin =scanner.nextLine();
                 System.out.println("Please enter new address:");
                 String address=scanner.nextLine();
@@ -145,9 +145,9 @@ public class Adminmenu{
                 String phone=scanner.nextLine();
                 System.out.println("Please enter email Address:");
                 String emailAddress=scanner.nextLine();
-                System.out.println("Please confirm whether it is Publisher(use 1 or 0):");
+                System.out.println("Please confirm whether it is Publisher(use true or false):");
                 String isPublisher =scanner.nextLine();
-                System.out.println("Please confirm whether it is Admin(use 1 or 0):");
+                System.out.println("Please confirm whether it is Admin(use true or false):");
                 String isAdmin =scanner.nextLine();
                 System.out.println("Please enter address:");
                 String address=scanner.nextLine();
